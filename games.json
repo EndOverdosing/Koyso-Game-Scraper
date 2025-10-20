@@ -1,0 +1,1370 @@
+[
+    {
+        "title": "1",
+        "description": "A number puzzle where you combine tiles to reach the ultimate goal of the number 1. Think strategically as each move counts. Every merge brings you closer to victory. Simple rules, but tricky gameplay.",
+        "image": "images/1.png",
+        "url": "g/1.html"
+    },
+    {
+        "title": "10 Bullets",
+        "description": "Fire only 10 bullets and try to cause the biggest chain reaction possible. Each hit can explode into more destruction. Timing and accuracy are key to clearing the screen. Can you make every shot count?",
+        "image": "images/10-bullets.png",
+        "url": "g/10-bullets.html"
+    },
+    {
+        "title": "10 Minutes Till Dawn",
+        "description": "Survive endless waves of monsters for 10 minutes. Use powerful weapons and upgrades to stay alive. Every second is intense and filled with danger. Only the strongest survive till dawn.",
+        "image": "images/10.png",
+        "url": "g/10 Minutes Till Dawn.html"
+    },
+    {
+        "title": "10-103 Null Kevin",
+        "description": "A dark, side-scrolling horror adventure. Explore unsettling environments filled with eerie enemies. Solve puzzles and survive encounters with terrifying creatures. A haunting sequel full of mystery.",
+        "image": "images/Kevin.png",
+        "url": "g/10-103 Null Kevin.html"
+    },
+    {
+        "title": "12 Mini Battles",
+        "description": "Challenge a friend in quick-fire mini-games. From sports to combat, each round is unique. The controls are simple but the competition is fierce. See who becomes the ultimate champion.",
+        "image": "images/12.png",
+        "url": "g/12 Mini Battles.html"
+    },
+    {
+        "title": "1 On 1 Soccer",
+        "description": "A fun and simple soccer duel. One player defends, the other attacks. Outscore your opponent to claim victory. Fast-paced and unpredictable matches every time.",
+        "image": "images/soccer.png",
+        "url": "g/1 On 1 Soccer.html"
+    },
+    {
+        "title": "1 On 1 Tennis",
+        "description": "Play a classic tennis showdown. Rally the ball back and forth over the net. Score points by outsmarting your rival. Quick and competitive matches every round.",
+        "image": "images/tennis.jpg",
+        "url": "g/1 On 1 Tennis.html"
+    },
+    {
+        "title": "1v1 lol",
+        "description": "Shoot, build, and survive in intense battles. Test your aim and building skills against real players. Fast matches keep the action constant. Outsmart and outgun your opponent to win.",
+        "image": "images/1v1lol.jpg",
+        "url": "g/1v1 lol.html"
+    },
+    {
+        "title": "1v1 lol (2)",
+        "description": "Engage in third-person shooting duels. Build defenses while attacking with precision. Every match tests your reflexes and creativity. Prove you are the last one standing.",
+        "image": "images/1v1.jpeg",
+        "url": "g/1v1loll.html"
+    },
+    {
+        "title": "2048 CupCakes",
+        "description": "Slide colorful cupcakes on the grid. Merge them to create new and tastier treats. Keep combining until you reach the 2048 cupcake. Addicting, sweet, and fun to play.",
+        "image": "images/2048cake.jpg",
+        "url": "g/2048 cupcakes.html"
+    },
+    {
+        "title": "2Doom",
+        "description": "A retro 2D version of DOOM. Fight classic enemies in pixel-art style. Blast your way through fast-paced levels. Old-school action with a new twist.",
+        "image": "images/doom.png",
+        "url": "g/2Doom.html"
+    },
+    {
+        "title": "2D Shooting Online",
+        "description": "Jump into a 2D multiplayer battlefield. Use a variety of weapons to defeat rivals. Play in different maps and modes with friends. Action-packed matches every time.",
+        "image": "images/2d.jpeg",
+        "url": "g/2D Shooting.html"
+    },
+    {
+        "title": "3Dash",
+        "description": "A 3D twist on Geometry Dash. Jump, dodge, and time your moves perfectly. Create and play levels with the advanced editor. Rhythm, challenge, and creativity collide.",
+        "image": "images/dash.jpg",
+        "url": "g/3Dash.html"
+    },
+    {
+        "title": "4th And Goal",
+        "description": "A football game with real playbook strategies. Run, pass, and score with no punts allowed. Use tactics to outsmart your opponent’s defense. Every play feels like a big game moment.",
+        "image": "images/4th.jpeg",
+        "url": "g/4th And Goal.html"
+    },
+    {
+        "title": "3 Slices 2",
+        "description": "Cut blocks into pieces with just three moves. Drop red ones, float the blue ones. Gravity and timing matter with each slice. Clever puzzles keep you thinking ahead.",
+        "image": "images/slice.png",
+        "url": "g/3 Slices 2.html"
+    },
+    {
+        "title": "60 Seconds Burger Run",
+        "description": "Rush to serve burgers before time runs out. Collect ingredients as fast as you can. Assemble orders and keep the customers happy. A frantic race against the clock.",
+        "image": "images/burger.png",
+        "url": "g/60 Seconds Burger Run.html"
+    },
+    {
+        "title": "60 Seconds Santa Run",
+        "description": "Help Santa reach the toy factory. You only have one minute to succeed. Dodge obstacles and move quickly through the snowy path. A festive test of speed and skill.",
+        "image": "images/santaaa.png",
+        "url": "g/60 Seconds Santa Run.html"
+    },
+    {
+        "title": "2048",
+        "description": "Slide tiles on the board to combine numbers. Aim to create the legendary 2048 tile. Plan ahead or risk filling up the grid. A modern classic puzzle game.",
+        "image": "images/2048.png",
+        "url": "g/2048.html"
+    },
+    {
+        "title": "8 Ball Classic",
+        "description": "Line up your cue and aim carefully. Pocket solids or stripes to clear the table. Strategic shots set you up for the win. Finish with the 8-ball to claim victory.",
+        "image": "images/8ball.jpeg",
+        "url": "g/8 Ball Classic.html"
+    },
+    {
+        "title": "8 Ball Pool",
+        "description": "Challenge opponents in realistic pool matches. Call your shots and pocket balls in order. Compete for skill and precision to win. A timeless game of strategy and aim.",
+        "image": "images/classic.jpeg",
+        "url": "g/8 Ball Pool.html"
+    },
+    {
+        "title": "9007199254740992",
+        "description": "Step into a strange number realm. Logic twists and precision is challenged. Every move could shift reality itself. A puzzle beyond ordinary comprehension.",
+        "image": "images/6767.png",
+        "url": "g/9007199254740992.html"
+    },
+    {
+        "title": "40xescape",
+        "description": "Escape from 40 unique puzzle rooms. Each challenge requires creative thinking. Solve clues to unlock the way forward. A simple yet clever test of wit.",
+        "image": "images/40x.jpeg",
+        "url": "g/40xescape.html"
+    },
+    {
+        "title": "99 Balls",
+        "description": "Shoot bouncing balls to break blocks. Each block has a number of hits required. Keep the blocks from reaching the bottom. Addictive and endless gameplay loop.",
+        "image": "images/99balls.jpeg",
+        "url": "g/99 Balls.html"
+    },
+    {
+        "title": "Abandoned",
+        "description": "Search strange lands for your lost brother. Solve tricky puzzles along the way. Explore eerie worlds full of mystery. A haunting puzzle-adventure experience.",
+        "image": "images/abn.jpeg",
+        "url": "g/Abandoned.html"
+    },
+    {
+        "title": "Abandoned 3",
+        "description": "Explore an abandoned haunted house. Solve riddles and uncover hidden secrets. Every corner hides something unexpected. A chilling test of bravery and brains.",
+        "image": "images/abbb.jpeg",
+        "url": "g/Abandoned 3.html"
+    },
+    {
+        "title": "Amanda the Adventurer",
+        "description": "Amanda the Adventurer is a creepy puzzle-horror game disguised as a children's cartoon. Watch lost VHS tapes, solve eerie clues, and uncover the dark secrets Amanda is hiding.",
+        "image": "images/amanda.jpeg",
+        "url": "g/Amanda the Adventurer.html"
+    },
+    {
+        "title": "Absolute Madness",
+        "description": "Absolute Madness is a fast-paced action game filled with chaos, relentless enemies, and over-the-top combat. Survive wave after wave of insanity as you fight your way through a world gone completely mad.",
+        "image": "images/maddih.png",
+        "url": "g/Absolute Madness.html"
+    },
+    {
+        "title": "Ace Gangster Taxi",
+        "description": "Ace Gangster Taxi puts you in the driver's seat as a daring cabbie navigating a crime-filled city. Pick up passengers, dodge cops, and climb the ranks to become the ultimate street taxi boss.",
+        "image": "images/tasi.jpeg",
+        "url": "g/Ace Gangster Taxi.html"
+    },
+    {
+        "title": "Achievement Unlocked",
+        "description": "Achievement Unlocked is a funny platformer where everything you do earns an achievement. Jump, explore, and unlock them all!",
+        "image": "images/3dw.webp",
+        "url": "g/Achievement Unlocked.html"
+    },
+    {
+        "title": "Achievement Unlocked 2",
+        "description": "Achievement Unlocked 2 doubles the madness with even more quirky challenges and hidden achievements. Explore bigger levels and unlock everything once again!",
+        "image": "images/j3ef.webp",
+        "url": "g/Achievement Unlocked 2.html"
+    },
+    {
+        "title": "Achievement Unlocked 3",
+        "description": "Achievement Unlocked 3 takes the chaos to new heights with hundreds of ridiculous achievements to earn. Explore massive levels and prove you can unlock them all!",
+        "image": "images/3elepf.webp",
+        "url": "g/Achievement Unlocked 3.html"
+    },
+    {
+        "title": "Achilles",
+        "description": "Achilles is a brutal action game where you battle through ancient Greece as the mighty warrior himself. Slash, kick, and conquer enemies to prove your legendary strength.",
+        "image": "images/ac5k.jpeg",
+        "url": "g/Achilles.html"
+    },
+    {
+        "title": "Achilles 2",
+        "description": "Achilles 2 continues the epic saga with faster combat, new weapons, and deadlier foes. Fight your way through ancient battlefields and cement your place as a true hero of Greece.",
+        "image": "images/swdrft.jpeg",
+        "url": "g/Achilles 2.html"
+    },
+    {
+        "title": "A Dance of Fire and Ice",
+        "description": "A Dance of Fire and Ice is a rhythm game where you guide two orbiting worlds through patterns of beats and music. Keep perfect timing to stay on track and master its mesmerizing challenges.",
+        "image": "images/fdaf.jpeg",
+        "url": "g/A Dance of Fire and Ice.html"
+    },
+    {
+        "title": "A Dark Room",
+        "description": "A Dark Room is a minimalist text-based adventure that grows from a single spark into a mysterious world. Gather resources, uncover secrets, and discover the truth hidden in the darkness.",
+        "image": "images/darkm334.png",
+        "url": "g/A Dark Room.html"
+    },
+    {
+        "title": "A Day In The Office",
+        "description": "A Day In The Office is a horror adventure game set in a seemingly normal workplace with dark secrets. Explore eerie offices, solve puzzles, and uncover what's really happening behind the cubicles.",
+        "image": "images/adito.jpeg",
+        "url": "g/A Day In The Office.html"
+    },
+    {
+        "title": "Advent Neon",
+        "description": "Advent Neon is a high-speed action platformer inspired by classic 2D brawlers. Dash, punch, and combo through enemies in a vibrant, neon-lit world of energy and rhythm.",
+        "image": "images/neon3n.png",
+        "url": "g/Advent Neon.html"
+    },
+    {
+        "title": "Ahoy Survival",
+        "description": "Ahoy Survival is an open-sea survival game where you build, explore, and fight to stay alive. Gather resources, craft gear, and defend your raft from the dangers of the ocean.",
+        "image": "images/ccr2.jpeg",
+        "url": "g/Ahoy Survival.html"
+    },
+    {
+        "title": "Agar.io Lite",
+        "description": "Agar.io Lite is a simplified version of the classic cell-eating game where you grow by consuming smaller blobs. Outsmart and outmaneuver other players to become the biggest cell on the map.",
+        "image": "images/sed2.jpeg",
+        "url": "g/Agar.io Lite.html"
+    },
+    {
+        "title": "Age of War",
+        "description": "Age of War is a strategy game where you evolve through different ages of combat. Build defenses, deploy units, and destroy your enemy's base to advance through history.",
+        "image": "images/rftgyh.jpeg",
+        "url": "g/Age of War.html"
+    },
+    {
+        "title": "Age of War 2",
+        "description": "Age of War 2 expands the original with new ages, units, and epic battles. Evolve your civilization, defend your base, and conquer enemies across time.",
+        "image": "images/2wars.jpeg",
+        "url": "g/Age of War 2.html"
+    },
+    {
+        "title": "Armor Mayhem 2",
+        "description": "Armor Mayhem 2 is a fast-paced sci-fi shooter where humans battle for control of a powerful energy source. Customize your soldier, arm yourself, and fight through chaotic arenas for victory.",
+        "image": "images/dfr89.jpeg",
+        "url": "g/Armor Mayhem 2.html"
+    },
+    {
+        "title": "Arsonate",
+        "description": "Arsonate is a chaotic action game where fire is your greatest weapon. Burn through levels, outsmart enemies, and watch the world go up in flames.",
+        "image": "images/arin3.jpeg",
+        "url": "g/Arsonate.html"
+    },
+    {
+        "title": "Are We There Yet",
+        "description": "Are We There Yet is a quirky adventure game about the ups and downs of a long road trip. Solve puzzles, manage your passengers, and try to reach your destination without losing your mind.",
+        "image": "images/arewefr.jpeg",
+        "url": "g/Are We There Yet.html"
+    },
+    {
+        "title": "Ages of Conflict",
+        "description": "Ages of Conflict is a sandbox war simulator where nations rise, fall, and conquer through endless battles. Watch the world evolve as AI-driven empires fight for dominance across randomly generated maps.",
+        "image": "images/wed34.jpeg",
+        "url": "g/Ages of Conflict.html"
+    },
+    {
+        "title": "A Koopa's Revenge",
+        "description": "A Koopa's Revenge is a platformer that flips the script, letting you play as a Koopa out for payback against Mario and his friends. Stomp, smash, and reclaim your kingdom in this darkly funny twist on a classic.",
+        "image": "images/8gb.jpeg",
+        "url": "g/A Koopas Revenge.html"
+    },
+    {
+        "title": "A Koopa's Revenge 2",
+        "description": "A Koopa's Revenge 2 expands the chaotic platforming adventure with bigger levels, new power-ups, and tougher enemies. Take your revenge once again and show the heroes who's really boss.",
+        "image": "images/ed234.jpeg",
+        "url": "g/A Koopas Revenge 2.html"
+    },
+    {
+        "title": "Alien Hominid",
+        "description": "Alien Hominid is a frantic shooter where a small alien fights off the FBI after crash-landing on Earth. Its cartoon style and nonstop action make every battle wild and intense.",
+        "image": "images/3we4.jpeg",
+        "url": "g/Alien Hominid.html"
+    },
+    {
+        "title": "Alien Sky Invasion",
+        "description": "Alien Sky Invasion is an action-packed space shooter where you defend Earth from waves of invading alien ships. Upgrade your weapons and dodge enemy fire to survive the cosmic assault.",
+        "image": "images/3rf3.jpg",
+        "url": "g/Alien Sky Invasion.html"
+    },
+    {
+        "title": "Allocation",
+        "description": "Allocation is a minimalist puzzle game where you strategically distribute resources to keep everything balanced. Each move matters as you manage limited supplies to achieve harmony and efficiency.",
+        "image": "images/3d34.png",
+        "url": "g/Allocation.html"
+    },
+    {
+        "title": "Amaze",
+        "description": "Amaze is a colorful maze game where you swipe to fill every path with paint. Plan your moves carefully to cover the entire maze without missing a spot.",
+        "image": "images/meze.png",
+        "url": "g/Amaze.html"
+    },
+    {
+        "title": "Amazing Strange Rope Police",
+        "description": "Amazing Strange Rope Police is an open-world action game where you play as a hero or villain with spider-like powers. Fight crime, cause chaos, and choose your own path in a city full of possibilities.",
+        "image": "images/rft3.jpeg",
+        "url": "g/Amazing Strange Rope Police.html"
+    },
+    {
+        "title": "Amidst The Sky",
+        "description": "Amidst The Sky is a serene adventure game where you soar through floating islands in the clouds. Explore, glide, and uncover the mysteries hidden above the world below.",
+        "image": "images/adfg.jpeg",
+        "url": "g/Amidst The Sky.html"
+    },
+    {
+        "title": "Amigo Pancho",
+        "description": "In Amigo Pancho, you help Pancho float to freedom by guiding his balloons safely through dangerous obstacles. Use strategy and timing to clear his path without popping his precious balloons!",
+        "image": "images/taco.png",
+        "url": "g/Amigo Pancho.html"
+    },
+    {
+        "title": "Amigo Pancho 2",
+        "description": "In Amigo Pancho 2, Pancho continues his balloon-powered adventures through new and trickier levels. Clear obstacles and outsmart traps to help him rise safely to the top!",
+        "image": "images/delmao.jpeg",
+        "url": "g/Amigo Pancho 2.html"
+    },
+    {
+        "title": "Amigo Pancho 3",
+        "description": "In Amigo Pancho 3, Pancho explores exotic locations filled with new puzzles and hazards. Use your wits to protect his balloons and help him soar to victory once again!",
+        "image": "images/p42f.jpeg",
+        "url": "g/Amigo Pancho 3.html"
+    },
+    {
+        "title": "Amigo Pancho 4",
+        "description": "In Amigo Pancho 4, Pancho travels to icy mountains and frozen caves on his next balloon adventure. Clear the path and keep his balloons intact as he braves the cold to reach the skies!",
+        "image": "images/p4q.jpeg",
+        "url": "g/Amigo Pancho 4.html"
+    },
+    {
+        "title": "Amigo Pancho 5",
+        "description": "In Amigo Pancho 5, Pancho dives into the wild west, facing bandits, cacti, and tricky traps. Use clever timing and problem-solving to help him float past danger and reach the top!",
+        "image": "images/pan35.jpeg",
+        "url": "g/Amigo Pancho 5.html"
+    },
+    {
+        "title": "Amigo Pancho 6",
+        "description": "In Amigo Pancho 6, Pancho sets off on an adventure through Egypt's ancient tombs and deserts. Solve clever puzzles and avoid deadly traps to help him rise above the sands to safety!",
+        "image": "images/pan23.jpeg",
+        "url": "g/Amigo Pancho 6.html"
+    },
+    {
+        "title": "Among Us",
+        "description": "In Among Us, crewmates work together to complete tasks aboard a spaceship while impostors try to sabotage and eliminate them. Use teamwork, deception, and deduction to survive and uncover the truth!",
+        "image": "images/mohg.jpeg",
+        "url": "g/Among Us.html"
+    },
+    {
+        "title": "Amorphous +",
+        "description": "Amorphous+ is a fast-paced action game where you slice through swarms of deadly Glooples. Each unique enemy behaves differently, testing your reflexes, timing, and skill.",
+        "image": "images/fr43.jpg",
+        "url": "g/Amorphous +.html"
+    },
+    {
+        "title": "Ancient Sins",
+        "description": "Ancient Sins is a dark fantasy action game where players uncover forbidden powers buried in ancient ruins. Battle corrupted gods and shape your destiny in a world consumed by sin and shadow.",
+        "image": "images/edrftgy.jpeg",
+        "url": "g/Ancient Sins.html"
+    },
+    {
+        "title": "Angry Birds",
+        "description": "Angry Birds is a physics-based puzzle game where players launch birds to destroy structures and defeat mischievous pigs. With colorful worlds and clever level design, it blends strategy and chaos for addictive fun.",
+        "image": "images/birsa.jpeg",
+        "url": "g/Angry Birds.html"
+    },
+    {
+        "title": "Angry Birds Showdown",
+        "description": "Angry Birds Showdown is a fast-paced competitive game where players face off in real-time bird-flinging battles. Use power-ups, strategy, and precision to outsmart opponents and claim victory in explosive arenas.",
+        "image": "images/flawsw2.jpeg",
+        "url": "g/Angry Birds Showdown.html"
+    },
+    {
+        "title": "Angry Birds Space",
+        "description": "Angry Birds Space takes bird-flinging action into space with gravity-based puzzles and new cosmic challenges. Navigate planets, asteroids, and zero-gravity zones in an intergalactic battle.",
+        "image": "images/ultragamez.jpeg",
+        "url": "g/Angry Birds Space.html"
+    },
+    {
+        "title": "Animator Vs Animation Game (Special Edition)",
+        "description": "Animator Vs Animation Game (Special Edition) lets players control the animator or rebellious stick figure in an epic desktop showdown. Create, destroy, and outsmart opponents in a battle of creativity and chaos.",
+        "image": "images/dfg.png",
+        "url": "g/Animator Vs Animation Game (Special Edition).html"
+    },
+    {
+        "title": "Apple Shooter",
+        "description": "Apple Shooter is a precision-based shooting game where players aim a bow to hit apples on heads without missing. Test your accuracy, timing, and nerves in this tense target challenge.",
+        "image": "images/vgbhn.jpeg",
+        "url": "g/Apple Shooter.html"
+    },
+    {
+        "title": "Apple Worm",
+        "description": "Apple Worm is a casual puzzle game where players guide a hungry worm through mazes to eat apples. Collect fruits, avoid obstacles, and grow your worm in fun, colorful levels.",
+        "image": "images/juicew.jpeg",
+        "url": "g/Apple Worm.html"
+    },
+    {
+        "title": "Aquapark.io",
+        "description": "Aquapark.io is a thrilling water slide racing game where players speed down twisting slides to reach the finish first. Use jumps, slides, and boosts to overtake opponents in chaotic, splash-filled races.",
+        "image": "images/234.png",
+        "url": "g/Aquapark.io.html"
+    },
+    {
+        "title": "Archery World Tour",
+        "description": "Archery World Tour is a competitive archery game where players aim and shoot at targets around the globe. Hone your precision, timing, and focus to become a champion archer in diverse arenas.",
+        "image": "images/rft.jpeg",
+        "url": "g/Archery World Tour.html"
+    },
+    {
+        "title": "Ascent",
+        "description": "Ascent is a fast-paced arcade game where players guide a rocket through obstacles, testing reflexes and precision. Collect power-ups and avoid hazards to climb higher and reach the ultimate score.",
+        "image": "images/ejfrhtg.png",
+        "url": "g/Ascent.html"
+    },
+    {
+        "title": "Assessment Examination",
+        "description": "Assessment Examination is a structured test designed to evaluate knowledge, skills, or abilities in a specific subject. It provides feedback to help identify strengths, weaknesses, and areas for improvement.",
+        "image": "images/ni3e.jpg",
+        "url": "g/Assessment Examination.html"
+    },
+    {
+        "title": "Asteroids",
+        "description": "Asteroids is a classic arcade game where players control a spaceship navigating through a field of drifting asteroids. Shoot and destroy asteroids while avoiding collisions to survive and score points.",
+        "image": "images/ale.png",
+        "url": "g/Asteroids.html"
+    },
+    {
+        "title": "Attack Hole",
+        "description": "Attack Hole is a fast-paced action game where players launch objects into a moving target to score points. Precision and timing are key to hitting the hole and achieving high scores.",
+        "image": "images/vce.jpeg",
+        "url": "g/Attack Hole.html"
+    },
+    {
+        "title": "A Small World Cup",
+        "description": "A Small World Cup is a fast-paced soccer game where players compete in tiny arenas with big action. Score goals, dodge opponents, and use power-ups to dominate the miniature pitch.",
+        "image": "images/34g.jpeg",
+        "url": "g/A Small World Cup.html"
+    },
+    {
+        "title": "Avalanche",
+        "description": "Avalanche is an intense survival game where players dodge falling rocks and debris. Move quickly, avoid obstacles, and survive as long as possible.",
+        "image": "images/ftg.jpeg",
+        "url": "g/Avalanche.html"
+    },
+    {
+        "title": "Aviamasters",
+        "description": "Aviamasters is a competitive aerial combat game where players pilot advanced aircraft. Master maneuvers, engage enemies, and dominate the skies.",
+        "image": "images/flything.jpeg",
+        "url": "g/Aviamasters.html"
+    },
+    {
+        "title": "Awesome Pirates",
+        "description": "Awesome Pirates is a swashbuckling adventure where players sail the high seas, battle rival crews, and hunt for treasure. Upgrade your ship, recruit your crew, and become the most feared pirate on the ocean.",
+        "image": "images/rf3kk.jpeg",
+        "url": "g/Awesome Pirates.html"
+    },
+    {
+        "title": "Awesome Planes",
+        "description": "Awesome Planes is a fast-paced aerial combat game where players pilot powerful aircraft. Perform daring maneuvers, defeat enemies, and dominate the skies.",
+        "image": "images/plan22.jpeg",
+        "url": "g/Awesome Planes.html"
+    },
+    {
+        "title": "Awesome Tanks",
+        "description": "Awesome Tanks is an action-packed battle game where players control powerful tanks on dynamic battlefields. Upgrade your tank, crush enemies, and dominate every fight.",
+        "image": "images/tank24.jpeg",
+        "url": "g/Awesome Tanks.html"
+    },
+    {
+        "title": "Awesome Tanks 2",
+        "description": "Awesome Tanks 2 is the thrilling sequel where players battle with upgraded tanks on intense arenas. Strategize, upgrade, and crush opponents to claim vic",
+        "image": "images/rfe5.jpeg",
+        "url": "g/Awesome Tanks 2.html"
+    },
+    {
+        "title": "Blob Eater Adventure",
+        "description": "Play as a hungry blob in Blob Eater Adventure, devouring everything in your path. Grow bigger, overcome obstacles, and explore vibrant worlds in this addictive eating spree!",
+        "image": "images/wdefrg.jpeg",
+        "url": "g/Blob Eater Adventure.html"
+    },
+    {
+        "title": "Babel Tower",
+        "description": "Babel Tower is a fast-paced stacking game where players build an ever-taller tower by carefully balancing blocks. The higher you go, the trickier it becomes, testing your precision and timing to reach the sky.",
+        "image": "images/ece.jpeg",
+        "url": "g/Babel Tower.html"
+    },
+    {
+        "title": "Baby Chicco Adventure",
+        "description": "Baby Chicco Adventure is a charming platformer where you guide Baby Chicco through colorful levels filled with fun obstacles and surprises. Collect items, avoid hazards, and help Baby Chicco reach the end safely.",
+        "image": "images/biby.jpeg",
+        "url": "g/Baby Chicco Adventure.html"
+    },
+    {
+        "title": "Backrooms",
+        "description": "Wander endless yellow halls in the Backrooms. Escape eerie rooms and avoid lurking dangers. The deeper you go, the harder it gets. Simple controls, chilling mystery.",
+        "image": "images/backrooms.jpeg",
+        "url": "g/Backrooms.html"
+    },
+    {
+        "title": "Backrooms 2D",
+        "description": "Backrooms 2D is a suspenseful horror game where you navigate endless, maze-like rooms filled with eerie sounds and lurking dangers. Every corner hides a new threat as you try to survive and find your way out.",
+        "image": "images/2de.jpeg",
+        "url": "g/Backrooms 2D.html"
+    },
+    {
+        "title": "Backyard Baseball",
+        "description": "Backyard Baseball is a fun, family-friendly sports game where kids take the field to play baseball with unique characters and quirky abilities. Swing, pitch, and score big while enjoying colorful backyard arenas.",
+        "image": "images/bakc.jpeg",
+        "url": "g/Backyard Baseball.html"
+    },
+    {
+        "title": "Bacon May Die",
+        "description": "Bacon May Die is a fast-paced action platformer where you slash, dash, and blast through hordes of enemies. With intense combat and explosive moves, survival depends on speed and skill.",
+        "image": "images/bacon2.png",
+        "url": "g/Bacon May Die.html"
+    },
+    {
+        "title": "Bad Ice Cream",
+        "description": "Bad Ice Cream is a puzzle-action game where you guide an ice cream character through mazes, collecting fruits while avoiding enemies. Use digging and blocking to outsmart foes and finish each stage.",
+        "image": "images/83g.jpeg",
+        "url": "g/Bad Ice Cream.html"
+    },
+    {
+        "title": "Bad Monday Simulator",
+        "description": "Bad Monday Simulator is a chaotic simulation game where you navigate the frustrations and absurdities of a typical Monday. Make choices, face unexpected events, and survive the day's madness.",
+        "image": "images/laya.jpeg",
+        "url": "g/Bad Monday Simulator.html"
+    },
+    {
+        "title": "Bad Parenting",
+        "description": "Bad Parenting is a darkly comedic simulation game where your choices as a parent lead to chaotic, unexpected outcomes. Every decision shapes your child's future — for better, worse, or disaster.",
+        "image": "images/badoy.jpeg",
+        "url": "g/Bad Parenting.html"
+    },
+    {
+        "title": "Bad Piggies",
+        "description": "Bad Piggies is a creative puzzle game where you build quirky contraptions to help the pigs reach their goals. Use imagination and physics to craft machines that fly, roll, or crash spectacularly.",
+        "image": "images/jief.jpeg",
+        "url": "g/Bad Piggies.html"
+    },
+    {
+        "title": "Bad Time Simulator",
+        "description": "Bad Time Simulator is a challenging fan-made game that recreates Sans' iconic boss fight from Undertale. Test your reflexes and determination as you dodge relentless attacks in a battle of pure endurance.",
+        "image": "images/eijfv.jpeg",
+        "url": "g/Bad Time Simulator.html"
+    },
+    {
+        "title": "Baldi's Basics",
+        "description": "Baldi's Basics is a horror-edu game where you solve math problems while escaping your unsettling teacher, Baldi. Collect notebooks, avoid strange characters, and try to survive the school's twisted halls.",
+        "image": "images/baldi.jpeg",
+        "url": "g/Baldis Basics.html"
+    },
+    {
+        "title": "Baldi's Basics Remastered",
+        "description": "Baldi's Basics Remastered is an upgraded version of the classic horror-edu game with enhanced visuals, mechanics, and surprises. Solve math problems, explore eerie halls, and escape Baldi's relentless pursuit.",
+        "image": "images/mast.png",
+        "url": "g/Baldis Basics Remastered.html"
+    },
+    {
+        "title": "Baldi's Basics The Ultra Decompile",
+        "description": "Baldi's Basics: The Ultra Decompile is a fan remake that pushes the original's limits with new content and chaos. Explore a twisted, unpredictable version of Baldi's school full of surprises.",
+        "image": "images/decom.jpeg",
+        "url": "g/Baldis Basics The Ultra Decompile.html"
+    },
+    {
+        "title": "Baldi's Fun New School Ultimate",
+        "description": "Baldi's Fun New School Ultimate is a fan-made expansion with new modes, characters, and endless challenges. Explore creative levels, uncover secrets, and test your skills in Baldi's craziest school.",
+        "image": "images/orf.jpeg",
+        "url": "g/Baldis Fun New School Ultimate.html"
+    },
+    {
+        "title": "Balls And Bricks",
+        "description": "Balls And Bricks is a simple yet addictive arcade game where you bounce balls to break colorful bricks. Strategically aim and clear levels to achieve the highest score.",
+        "image": "images/ba42.jpeg",
+        "url": "g/Balls And Bricks.html"
+    },
+    {
+        "title": "Ball Blast",
+        "description": "Ball Blast is an action-packed arcade game where you shoot falling balls to break them before they reach the ground. Upgrade your cannon and aim carefully to survive longer and score higher.",
+        "image": "images/blask.jpeg",
+        "url": "g/Ball Blast.html"
+    },
+    {
+        "title": "Bandit Gunslingers",
+        "description": "Bandit Gunslingers is a fast-paced western shooter where you duel outlaws and test your quick-draw skills. Upgrade your weapons, survive ambushes, and become the ultimate gunslinger.",
+        "image": "images/slin.jpeg",
+        "url": "g/Bandit Gunslingers.html"
+    },
+    {
+        "title": "Banana Simulator",
+        "description": "Banana Simulator lets you live the ridiculous life of a banana trying to survive in a world full of hungry creatures. Collect potassium, dodge dangers, and prove that even fruit can be legendary.",
+        "image": "images/hfd.jpeg",
+        "url": "g/Banana Simulator.html"
+    },
+    {
+        "title": "Bank Robbery 2",
+        "description": "Bank Robbery 2 puts you back in the action as you plan and execute high-stakes heists with precision and teamwork. Outsmart the cops, crack safes, and escape with the loot before the alarms go off.",
+        "image": "images/joku.jpeg",
+        "url": "g/Bank Robbery 2.html"
+    },
+    {
+        "title": "Barry Has a Secret",
+        "description": "Barry Has a Secret is a tense physics-based horror game where you must hide evidence of your dark deeds before the police arrive. Keep your cool, conceal the truth, and pray they don’t find out what you’ve done.",
+        "image": "images/kjerf.jpeg",
+        "url": "g/Barry Has a Secret.html"
+    },
+    {
+        "title": "BAS",
+        "description": "BAS (Battle Arena Simulator) throws you into chaotic combat where only the smartest and fastest fighters survive. Customize your warrior, master powerful moves, and dominate the arena to claim ultimate victory.",
+        "image": "images/ftg2.png",
+        "url": "g/BAS.html"
+    },
+    {
+        "title": "Baseball Bros",
+        "description": "Baseball Bros is a fast-paced sports game where you and your buddy swing for the fences in hilarious over-the-top matches. Time your hits perfectly, score big, and become the ultimate baseball duo.",
+        "image": "images/bas2.jpeg",
+        "url": "g/Baseball Bros.html"
+    },
+    {
+        "title": "Basket Battle",
+        "description": "Basket Battle is an intense, fast-paced game where players slam, shoot, and steal their way to victory on the court. Outsmart your opponents, pull off crazy dunks, and claim the championship!",
+        "image": "images/jkwed.jpeg",
+        "url": "g/Basket Battle.html"
+    },
+    {
+        "title": "Basket Bros",
+        "description": "Basket Bros is a fun, action-packed basketball game where you team up with a friend to score big and dominate the court. Dribble, dunk, and outplay your rivals in chaotic, fast-paced matches.",
+        "image": "images/fr34.jpeg",
+        "url": "g/Basket Bros.html"
+    },
+    {
+        "title": "Basket Random",
+        "description": "Play unpredictable ragdoll basketball. Courts, balls, and rules change constantly. Score baskets before your rival does. Funny, chaotic, and competitive fun.",
+        "image": "images/basket.webp",
+        "url": "g/BasketRandom.html"
+    },
+    {
+        "title": "Basket Slam Dunk 2",
+        "description": "Step onto the court in Basket Slam Dunk 2 and show off your ultimate basketball skills. Perform epic dunks, outscore opponents, and dominate every match!",
+        "image": "images/45g3.jpeg",
+        "url": "g/Basket Slam Dunk 2.html"
+    },
+    {
+        "title": "Basketball FRVR",
+        "description": "Jump into fast-paced hoops action in Basketball FRVR and aim for the perfect shot. Score points, beat your high score, and enjoy endless basketball fun!",
+        "image": "images/ffrve.jpeg",
+        "url": "g/Basketball FRVR.html"
+    },
+    {
+        "title": "Basketball Legends",
+        "description": "Compete with the best in Basketball Legends and showcase your legendary skills on the court. Unlock stars, perform epic moves, and lead your team to victory!",
+        "image": "images/ojerf.jpeg",
+        "url": "g/Basketball Legends.html"
+    },
+    {
+        "title": "Bloxorz",
+        "description": "Bloxorz. Roll a rectangular block across tricky platforms and solve mind-bending puzzles. Navigate carefully, avoid falling, and reach the goal to advance through challenging levels.",
+        "image": "images/bloxx.jpeg",
+        "url": "g/Bloxorz.html"
+    },
+    {
+        "title": "BTD1",
+        "description": "BTD1 (Bloons Tower Defense 1) is a classic strategy game where players place towers to pop waves of balloons. Plan your defenses, upgrade towers, and stop the bloons from reaching the end.",
+        "image": "images/bloon.jpeg",
+        "url": "g/BTD1.html"
+    },
+    {
+        "title": "Chicken CS",
+        "description": "Become a blocky battle chicken armed with powerful weapons! Fight in colorful arenas, blast your rivals, and prove who rules the coop in this fast-paced action shooter.",
+        "image": "images/chicken.jpeg",
+        "url": "g/Chickenwar.html"
+    },
+    {
+        "title": "Clash Of Vikings",
+        "description": "Clash of Vikings is a fast-paced strategy game where you summon warriors and cast spells to defeat your rival clan. Outsmart your opponent and destroy their base to claim ultimate victory.",
+        "image": "images/clashyy.jpeg",
+        "url": "g/Clash Of Vikings.html"
+    },
+    {
+        "title": "Cluster Rush",
+        "description": "Dash through colorful clusters and avoid obstacles. Collect points, stay fast, and see how far you can go!",
+        "image": "images/cluster.jpeg",
+        "url": "g/Cluster Rush.html"
+    },
+    {
+        "title": "Call of Duty - Black Ops",
+        "description": "Call of Duty: Black Ops is a first-person shooter set during the Cold War. Engage in intense missions, multiplayer battles, and covert operations to complete your objectives.",
+        "image": "images/duty67.jpeg",
+        "url": "g/Call of Duty - Black Ops.html"
+    },
+    {
+        "title": "Crazy Cattle 3D",
+        "description": "Smash the cattle and dodge obstacles in 3D chaos. Collect points, avoid crashes, and master the herd!",
+        "image": "images/craazzzy.jpeg",
+        "url": "g/Crazy Cattle 3D.html"
+    },
+    {
+        "title": "Cookie Clicker",
+        "description": "Cookie Clicker is a popular idle game where you bake cookies by clicking a giant cookie. You can spend cookies on upgrades and buildings to grow your bakery into an endless cookie empire.",
+        "image": "images/cookie.jpeg",
+        "url": "g/Cookie Clicker.html"
+    },
+    {
+        "title": "Cuphead",
+        "description": "Cuphead. A fast-paced run-and-gun game with 1930s cartoon visuals. Battle bizarre bosses, dodge endless attacks, and test your skills in a tough but rewarding adventure.",
+        "image": "images/cuphead.png",
+        "url": "g/Cuphead.html"
+    },
+    {
+        "title": "Drive Mad",
+        "description": "Take control of a wobbly car. Navigate obstacles without flipping over. Each level gets trickier and more creative. Precision driving leads you to victory.",
+        "image": "images/drive.webp",
+        "url": "g/Drive Mad.html"
+    },
+    {
+        "title": "Driven Wild",
+        "description": "Driven Wild is an adrenaline-fueled racing game where speed and skill are everything. Dodge obstacles, pull off crazy stunts, and survive as long as you can on the wild roads.",
+        "image": "images/wild.jpeg",
+        "url": "g/Driven Wild.html"
+    },
+    {
+        "title": "Doom",
+        "description": "Doom is a fast-paced shooter where you battle demons from Hell across futuristic bases and fiery landscapes. Blast through hordes of enemies with powerful weapons in this iconic action game.",
+        "image": "images/doom.webp",
+        "url": "g/Doom.html"
+    },
+    {
+        "title": "Duck Life",
+        "description": "Duck Life is a fun training game where you raise and train a duck to compete in races. By improving skills like running, swimming, flying, and climbing, your duck becomes stronger and faster to win championships.",
+        "image": "images/duck1.png",
+        "url": "g/Duck Life.html"
+    },
+    {
+        "title": "Duck Life 2",
+        "description": "Duck Life 2 continues the adventure with new challenges and more advanced training options for your duck. Travel through different environments and master new skills to race against tougher opponents.",
+        "image": "images/duck2.jpeg",
+        "url": "g/Duck Life 2.html"
+    },
+    {
+        "title": "Duck Life 3",
+        "description": "Duck Life 3 lets you take your duck global, competing in races across multiple islands. Train your duck's running, flying, swimming, and climbing skills to become the ultimate champion.",
+        "image": "images/duck3.jpeg",
+        "url": "g/Duck Life 3.html"
+    },
+    {
+        "title": "Duck Life 4",
+        "description": "Duck Life 4 upgrades the adventure with a fully 3D world and even more races to conquer. Hatch, train, and customize your duck while competing against new rivals to become the ultimate champion.",
+        "image": "images/duck4.jpeg",
+        "url": "g/Duck Life 4.html"
+    },
+    {
+        "title": "Duck Life 5",
+        "description": "Duck Life 5 lets you explore an expansive world filled with exciting races and challenges. Train your duck’s skills, customize its appearance, and compete to become the ultimate champion across diverse terrains.",
+        "image": "images/duck5.png",
+        "url": "g/Duck Life 5.html"
+    },
+    {
+        "title": "Duck Life Space",
+        "description": "Duck Life: Space takes your duck training adventure to outer space! Race across alien planets, boost your skills, and compete in zero-gravity challenges to become the galaxy's top duck.",
+        "image": "images/spaceduck.webp",
+        "url": "g/Duck Life Space.html"
+    },
+    {
+        "title": "Duck Life Battle",
+        "description": "Duck Life: Battle lets you pit your trained ducks against others in fast-paced, strategic battles. Upgrade your ducks abilities and compete online to see who dominates the arena.",
+        "image": "images/duck2241.png",
+        "url": "g/Duck Life Battle.html"
+    },
+    {
+        "title": "Don't Escape",
+        "description": "Don't Escape is a tense point-and-click adventure where every choice matters as you try to survive a deadly situation. Solve puzzles, gather resources, and make split-second decisions to avoid a catastrophic fate.",
+        "image": "images/dontaescapey.jpeg",
+        "url": "g/Don't Escape.html"
+    },
+    {
+        "title": "Don't Escape 2",
+        "description": "Don't Escape 2 is a survival puzzle game where you must prepare your home to withstand a deadly night. Gather resources, solve challenges, and make smart choices to survive until morning.",
+        "image": "images/dominos.jpeg",
+        "url": "g/Don't Escape 2.html"
+    },
+    {
+        "title": "Drift Hunters",
+        "description": "Get behind the wheel and race high-speed cars on thrilling tracks. Master sharp drifts, upgrade your vehicles, and compete to become the ultimate drift champion!",
+        "image": "images/drifttt.jpeg",
+        "url": "g/Drift Hunters.html"
+    },
+    {
+        "title": "Drift Boss",
+        "description": "Take control of your car and race through challenging tracks with precision. Drift around corners, avoid obstacles, and push your skills to dominate every course!",
+        "image": "images/drift.jpeg",
+        "url": "g/Drift Boss.html"
+    },
+    {
+        "title": "Escape Road",
+        "description": "Race down a dangerous road filled with obstacles and traps! Dodge, weave, and survive as long as you can while the speed keeps rising. Can you make your great escape?",
+        "image": "images/escape.jpeg",
+        "url": "g/Escape Road.html"
+    },
+    {
+        "title": "Escape Road 2",
+        "description": "Escape Road 2 puts you in a high-speed chase where every turn tests your reflexes. Dodge traffic, avoid obstacles, and see how far you can escape before the road catches up.",
+        "image": "images/222ak.jpeg",
+        "url": "g/Escape Road 2.html"
+    },
+    {
+        "title": "Elastic Face",
+        "description": "Elastic Face. Stretch, twist, and pull a goofy face like it is made of rubber! Drag different parts and watch it snap back with hilarious expressions. Simple, silly, and endlessly entertaining.",
+        "image": "images/facey.jpeg",
+        "url": "g/Elastic Face.html"
+    },
+    {
+        "title": "FNAF",
+        "description": "Survive five nights as a security guard in a haunted pizzeria where animatronics come to life. Watch the cameras, manage your power, and do nott let them catch you in this terrifying survival horror!",
+        "image": "images/fnaf.jpeg",
+        "url": "g/FNAF.html"
+    },
+    {
+        "title": "Fancy Pants Adventure 2",
+        "description": "Fancy Pants Adventure 2 is a platformer with a stick-figure hero in orange pants navigating hand-drawn levels. Dash, jump, and flip through fast-paced challenges.",
+        "image": "images/fancyyy.jpeg",
+        "url": "g/Fancy Pants Adventure 2.html"
+    },
+    {
+        "title": "Granny 2",
+        "description": "Trapped again—this time with Granny and Grandpa! Sneak, hide, and solve puzzles to escape their house before it is too late.",
+        "image": "images/granny2.jpg",
+        "url": "g/Granny 2.html"
+    },
+    {
+        "title": "Gun Spin!",
+        "description": "Test your luck and nerve! Spin the chamber and see if you survive. Quick reflexes and a bit of courage decide your fate.",
+        "image": "images/gun.jpeg",
+        "url": "g/Gun Spin.html"
+    },
+    {
+        "title": "Grow A Garden",
+        "description": "Grow a Garden lets you plant seeds, water them, and watch your garden flourish over time. Strategically care for your plants to create a vibrant and thriving outdoor space.",
+        "image": "images/gag.webp",
+        "url": "g/gag.html"
+    },
+    {
+        "title": "Hole.io",
+        "description": "Control a black hole and swallow everything in sight! Compete with others, grow bigger, and dominate the city until nothing is left standing.",
+        "image": "images/hole.jpg",
+        "url": "g/Hole.io.html"
+    },
+    {
+        "title": "Happy Room",
+        "description": "Happy Room is a physics-based sandbox game where you test weapons and traps on dummies. Experiment with creative setups to cause maximum chaos and destruction.",
+        "image": "images/room67677.jpeg",
+        "url": "g/Happy Room.html"
+    },
+    {
+        "title": "Happy Wheels",
+        "description": "HHappy Wheels is a ragdoll physics game where you navigate deadly obstacle courses. Ride as various characters and survive crazy traps to reach the finish.",
+        "image": "images/wheelshappy.jpeg",
+        "url": "g/Happy Wheels.html"
+    },
+    {
+        "title": "HEI$T",
+        "description": "HEI$T is an action-packed game where you plan and execute high-stakes robberies. Strategize, avoid security, and collect as much loot as you can.",
+        "image": "images/highist.jpeg",
+        "url": "g/HEI$T.html"
+    },
+    {
+        "title": "Infinite Craft",
+        "description": "Infinite Craft is a sandbox building game where you create and explore endless worlds. Gather resources, craft tools, and build anything you can imagine.",
+        "image": "images/infinite.png",
+        "url": "g/Infinite Craft.html"
+    },
+    {
+        "title": "Interactive Buddy",
+        "description": "Interactive Buddy is a sandbox game where you interact with a customizable buddy. Experiment with toys, weapons, and tools to see how they react.",
+        "image": "images/buddyyy.jpeg",
+        "url": "g/Interactive Buddy.html"
+    },
+    {
+        "title": "Ice Dodo",
+        "description": "Ice Dodo is a fast-paced platformer where you guide a dodo across icy, obstacle-filled paths. Precision and quick reflexes are key to surviving each level.",
+        "image": "images/icedo.jpg",
+        "url": "g/Ice Dodo.html"
+    },
+    {
+        "title": "Icy Purple Head",
+        "description": "Icy Purple Head is a physics-based puzzle game where you slide, freeze, and unfreeze a purple head to reach the goal. Timing and clever use of ice mechanics are key to success.",
+        "image": "images/Icy Purple Head.jpeg",
+        "url": "g/Icy Purple Head.html"
+    },
+    {
+        "title": "Idle Breakout",
+        "description": "Idle Breakout is an addictive idle game that reimagines the classic Breakout. You earn cash to upgrade balls and automate brick-breaking for endless progression.",
+        "image": "images/wrbreak.png",
+        "url": "g/Idle Breakout.html"
+    },
+    {
+        "title": "Idle Dice",
+        "description": "Idle Dice is an incremental game where you roll dice to earn money and upgrade them. The goal is to build powerful dice combos that generate massive rewards over time.",
+        "image": "images/dice3.jpeg",
+        "url": "g/Idle Dice.html"
+    },
+    {
+        "title": "Idle Game Dev",
+        "description": "Idle Game Dev is a meta idle game where you develop and upgrade your own idle games. Earn profits, research new genres, and expand your virtual game studio empire.",
+        "image": "images/dev224.jpg",
+        "url": "g/Idle Idle Game Dev.html"
+    },
+    {
+        "title": "Idle Miner Tycoon",
+        "description": "Idle Miner Tycoon is a management and simulation game where you build and upgrade mines to earn passive income. Hire managers, optimize production, and grow your mining empire.",
+        "image": "images/ghostgirl.jpeg",
+        "url": "g/Idle Miner Tycoon.html"
+    },
+    {
+        "title": "Indian Truck Simulator",
+        "description": "Indian Truck Simulator is a driving simulation game where you transport cargo across realistic Indian roads and landscapes. Experience authentic trucks, challenging routes, and dynamic weather conditions.",
+        "image": "images/noredeemit.jpg",
+        "url": "g/Indian Truck Simulator.html"
+    },
+    {
+        "title": "Innkeeper",
+        "description": "Innkeeper is a management simulation game where you run your own tavern. Serve guests, upgrade your inn, and grow your business into a thriving hotspot.",
+        "image": "images/keepdeex.webp",
+        "url": "g/Innkeeper.html"
+    },
+    {
+        "title": "Into Ruins",
+        "description": "Into Ruins is a survival strategy game where you rebuild civilization after an apocalypse. Manage resources, expand your settlement, and face the challenges of a ruined world.",
+        "image": "images/ruins2.png",
+        "url": "g/Into Ruins.html"
+    },
+    {
+        "title": "Into Space",
+        "description": "Into Space is a rocket-launching game where you build and upgrade your spacecraft to reach outer space. Balance fuel, speed, and control to soar higher with each attempt.",
+        "image": "images/spaceinto.jpeg",
+        "url": "g/Into Space.html"
+    },
+    {
+        "title": "Into Space 2",
+        "description": "Into Space 2 is a rocket-building sequel where you continue your mission to reach Mars. Upgrade your ship, manage fuel, and navigate obstacles to conquer the red planet.",
+        "image": "images/23421.jpeg",
+        "url": "g/Into Space 2.html"
+    },
+    {
+        "title": "Into Space 3",
+        "description": "Into Space 3 is the final chapter of the rocket-launching series, set in deep space. Build advanced ships, gather resources, and survive alien threats on your journey home.",
+        "image": "images/3xms.png",
+        "url": "g/Into Space 3.html"
+    },
+    {
+        "title": "Into The Deep Web",
+        "description": "Into The Deep Web is a simulation and exploration game that lets you navigate the mysterious layers of the internet. Uncover secrets, avoid dangers, and see how deep you can go.",
+        "image": "images/itdw.png",
+        "url": "g/Into The Deep Web.html"
+    },
+    {
+        "title": "Intrusion",
+        "description": "Intrusion is a side-scrolling action platformer featuring intense gunfights and physics-based combat. Battle enemies across hostile environments using agility and heavy firepower.",
+        "image": "images/2vsr.jpeg",
+        "url": "g/Intrusion.html"
+    },
+    {
+        "title": "IQ Ball",
+        "description": "IQ Ball is a physics puzzle game where you use a stretchy, sticky arm to grab targets. Solve clever challenges that test your timing, precision, and problem-solving skills.",
+        "image": "images/baller2.jpeg",
+        "url": "g/IQ Ball.html"
+    },
+    {
+        "title": "Iron Snout",
+        "description": "Iron Snout is a fast-paced fighting game where you play as a brave pig battling waves of wolves. Use punches, kicks, and weapon throws to survive and rack up combos.",
+        "image": "images/wildvro.jpeg",
+        "url": "g/Iron Snout.html"
+    },
+    {
+        "title": "Islander",
+        "description": "Islander is a minimalist strategy game where you build and expand settlements on colorful islands. Place buildings efficiently to earn points and unlock new islands to explore.",
+        "image": "images/2d3dv.jpg",
+        "url": "g/Islander.html"
+    },
+    {
+        "title": "Jailbreak Obby",
+        "description": "Escape the prison by running, jumping, and dodging deadly traps! Test your parkour skills through tricky obstacle courses and see if you can break free.",
+        "image": "images/jail.jpeg",
+        "url": "g/Jailbreak Obby.html"
+    },
+    {
+        "title": "Knightmare Tower",
+        "description": "Launch into battle and slice through waves of monsters as you climb the tower! Rescue princesses, upgrade your gear, and see how high you can go in this fast-paced action adventure.",
+        "image": "images/knight.jpeg",
+        "url": "g/Knightmare Tower.html"
+    },
+    {
+        "title": "kindergarten 1",
+        "description": "In Kindergarten, you relive a bizarre and darkly humorous school day filled with secrets, strange characters, and deadly surprises. Explore, experiment, and uncover the twisted mysteries hidden within the classroom!",
+        "image": "images/erfgt.jpeg",
+        "url": "g/kindergarten 1.html"
+    },
+    {
+        "title": "Kindergarten 2",
+        "description": "In Kindergarten 2, you return to a new school with even more chaos, mysteries, and strange students. Complete wild missions, form risky alliances, and uncover the dark truth behind the experiments!",
+        "image": "images/kinde2.jpeg",
+        "url": "g/Kindergarten 2.html"
+    },
+    {
+        "title": "kindergarten 3",
+        "description": "In Kindergarten 3, the madness continues as you face new challenges, weirder characters, and even darker secrets. Outsmart danger, solve twisted puzzles, and survive another chaotic school day!",
+        "image": "images/2e4f.jpeg",
+        "url": "g/kindergarten 3.html"
+    },
+    {
+        "title": "Learn to Fly",
+        "description": "Help a determined penguin learn to fly! Launch, glide, and upgrade your gear to soar farther each time in this addictive adventure.",
+        "image": "images/fly.jpeg",
+        "url": "g/Learn to Fly.html"
+    },
+    {
+        "title": "Minecraft 1.11.2",
+        "description": "Explore, build, and survive in Minecraft 1.11.2. Craft tools, fight mobs, and shape your world block by block. Endless creativity, adventure, and survival await.",
+        "image": "images/minecraft.jpeg",
+        "url": "g/Minecraft 1.11.2.html"
+    },
+    {
+        "title": "Minecraft 1.20.1",
+        "description": "Gather, build, and survive in Minecraft 1.20.1. Explore new biomes, craft gear, and unleash your creativity block by block.",
+        "image": "images/minecraft.jpeg",
+        "url": "g/mc1.20_u76.html"
+    },
+    {
+        "title": "Nazi Zombies Portable",
+        "description": "Fight endless waves of zombies in this portable FPS! Survive as long as you can, unlock weapons, and hold your ground against the undead.",
+        "image": "images/nzp.jpeg",
+        "url": "g/nzp.html"
+    },
+    {
+        "title": "New York Shark",
+        "description": "New York Shark is a chaotic action game where you control a giant shark wreaking havoc across the city. Bite, smash, and cause destruction as you take down everything in your path.",
+        "image": "images/sharkyyy.jpeg",
+        "url": "g/New York Shark.html"
+    },
+    {
+        "title": "Only Up",
+        "description": "Climb higher and higher through wild obstacles and tricky platforms! One wrong step sends you back down, so keep your balance and see how far you can go.",
+        "image": "images/Only Up.jpeg",
+        "url": "g/Only Up.html"
+    },
+    {
+        "title": "Obby 99% Will Lose",
+        "description": "Obby 99% Will Lose is a challenging obstacle course game that tests your skills and patience. Navigate tricky jumps and traps to reach the end—if you can beat the 99% who fail!",
+        "image": "images/99.jpeg",
+        "url": "g/Obby 99% Will Lose.html"
+    },
+    {
+        "title": "Punch the Trump",
+        "description": "Step into the ring and take your best shots at Trump! Throw punches, dodge, and see how long you can last in this over-the-top boxing parody.",
+        "image": "images/punchy.jpeg",
+        "url": "g/Punch the Trump.html"
+    },
+    {
+        "title": "Paper.io",
+        "description": "Paper.io is a multiplayer game where you claim territory by drawing lines. Avoid other players while expanding your area to dominate.",
+        "image": "images/paper.jpeg",
+        "url": "g/Paper.io.html"
+    },
+    {
+        "title": "Portal 2D",
+        "description": "Portal 2D is a puzzle-platformer where you use portals to navigate tricky levels. Solve challenges by thinking creatively and moving through space in unexpected ways.",
+        "image": "images/eeeeeee.jpeg",
+        "url": "g/Portal 2D.html"
+    },
+    {
+        "title": "Plazma Burst",
+        "description": "Plazma Burst is a side-scrolling shooter where you battle enemies with futuristic weapons. Complete missions and upgrade your gear to survive intense combat.",
+        "image": "images/plasma.jpeg",
+        "url": "g/Plazma Burst.html"
+    },
+    {
+        "title": "Pizza Tower",
+        "description": "Pizza Tower is a fast-paced platformer where you dash, jump, and smash through levels to save your pizza. Collect items and defeat enemies in chaotic, high-energy stages.",
+        "image": "images/towea.jpeg",
+        "url": "g/Pizza Tower.html"
+    },
+    {
+        "title": "Pixel Battlegrounds.io",
+        "description": "Pixel Battlegrounds.io is a battle royale game with blocky, pixelated graphics. Survive, loot weapons, and outlast other players to be the last one standing.",
+        "image": "images/battle223.jpeg",
+        "url": "g/Pixel Battlegrounds.io.html"
+    },
+    {
+        "title": "Papa's Taco mia",
+        "description": "Papa's Taco Mia is a time-management game where you run a taco shop. Take orders, cook ingredients, and serve customers to earn tips and upgrade your restaurant.",
+        "image": "images/tacomia.jpeg",
+        "url": "g/Papa's Taco mia.html"
+    },
+    {
+        "title": "Pixel Speedrun",
+        "description": "Pixel Speedrun is a fast-paced platformer where you race through challenging levels as quickly as possible. Dodge obstacles, jump precisely, and beat your best times.",
+        "image": "images/pixy.jpeg",
+        "url": "g/Pixel Speedrun.html"
+    },
+    {
+        "title": "Portal",
+        "description": "Portal is a puzzle-platformer where you use a portal gun to create gateways and navigate complex test chambers. Solve mind-bending puzzles by thinking creatively and manipulating space.",
+        "image": "images/Portal.jpeg",
+        "url": "g/Portal.html"
+    },
+    {
+        "title": "Pac-man",
+        "description": "Pac-Man is a classic arcade game where you navigate a maze, eating pellets while avoiding ghosts. Clear all the pellets to advance and rack up a high score.",
+        "image": "images/pacman.png",
+        "url": "g/Pac-man.html"
+    },
+    {
+        "title": "Poly Track",
+        "description": "Poly Track takes racing to the next level with smoother controls, sharper visuals, and dynamic tracks. Test your speed, precision, and skill as you compete to set record-breaking times.",
+        "image": "images/trackyyy.jpeg",
+        "url": "g/Poly Track.html"
+    },
+    {
+        "title": "Quake III Arena",
+        "description": "Quake III Arena throws you into intense, fast-paced arena battles where reflexes and precision rule. Blast through opponents with iconic weapons and dominate maps in pure multiplayer chaos.",
+        "image": "images/quake.jpeg",
+        "url": "g/Quake III Arena.html"
+    },
+    {
+        "title": "Ragdoll Archers",
+        "description": "Ragdoll Archers is a physics-based bow battle where wobbly warriors fling arrows in chaotic duels. Aim carefully, adapt to ragdoll physics, and outlast your opponent in hilarious, unpredictable fights.",
+        "image": "images/archer.jpeg",
+        "url": "g/Ragdoll Archers.html"
+    },
+    {
+        "title": "Raft",
+        "description": "Raft is an ocean survival game where you collect drifting debris to build and upgrade your floating home. Explore islands, craft tools, and fight to stay alive against the dangers of the sea.",
+        "image": "images/raftyy.png",
+        "url": "g/Raft.html"
+    },
+    {
+        "title": "Retro Bowl",
+        "description": "Retro Bowl is a retro-style American football game that combines team management with on-field action. Draft players, call plays, and lead your team to championship glory.",
+        "image": "images/de22.jpeg",
+        "url": "g/Retro Bowl.html"
+    },
+    {
+        "title": "Steal A Brainrot",
+        "description": "Steal a Brainrot is a chaotic battle where you snatch brainrot from rivals while protecting your own. Outsmart, dodge, and scheme your way to the crown in nonstop fast-paced fun",
+        "image": "images/brainrot.jpeg",
+        "url": "g/Steal A Brainrot.html"
+    },
+    {
+        "title": "Super Mario 64",
+        "description": "Super Mario 64 is a 3D platformer where Mario explores magical worlds through paintings in Peach is Castle. Collect stars, defeat Bowser, and save the princess in this classic adventure.",
+        "image": "images/marioo64.jpeg",
+        "url": "g/Super Mario 64.html"
+    },
+    {
+        "title": "Sonic the Hedgehog",
+        "description": "Sonic the Hedgehog is a high-speed platformer where you race as Sonic to stop Dr. Robotnik. Dash through loops, collect rings, and save your animal friends.",
+        "image": "images/sonicy.jpeg",
+        "url": "g/Sonic the Hedgehog.html"
+    },
+    {
+        "title": "slope",
+        "description": "Slope is a fast-paced endless runner where you guide a ball down a neon track at breakneck speed. Dodge obstacles, stay on course, and see how far you can roll before the fall",
+        "image": "images/slope.jpeg",
+        "url": "g/slope.html"
+    },
+    {
+        "title": "Snow Rider 3D",
+        "description": "Snow Rider 3D is a fast-paced endless sledding game where you race down snowy slopes while avoiding obstacles. Collect gifts along the way to unlock new sleds and see how far you can go without crashing.",
+        "image": "images/snowrider.jpeg",
+        "url": "g/Snow Rider 3D.html"
+    },
+    {
+        "title": "Super Mario 63",
+        "description": "Super Mario 63 is a fan-made platformer mixing classic Mario with 64 and Sunshine. Explore levels, collect shines, and enjoy a fresh 2D adventure.",
+        "image": "images/6363.jpeg",
+        "url": "g/Super Mario 63.html"
+    },
+    {
+        "title": "Superhot",
+        "description": "SUPERHOT is a unique first-person shooter where time moves only when you move. Strategically plan your actions to dodge bullets and eliminate enemies in stylish, slow-motion combat.",
+        "image": "images/hott2.jpeg",
+        "url": "g/Superhot.html"
+    },
+    {
+        "title": "Slow Roads",
+        "description": "Slow Roads is a relaxing, atmospheric game where you explore serene landscapes at your own pace. Take in the calming scenery, discover hidden paths, and enjoy a meditative journey through quiet roads.",
+        "image": "images/slowww.jpeg",
+        "url": "g/Slow Roads.html"
+    },
+    {
+        "title": "Scary Maze Game",
+        "description": "Scary Maze Game is a simple-looking puzzle game that lures players into focusing on the path. Just when you least expect it, a sudden jump scare delivers a shocking and hilarious fright.",
+        "image": "images/scarymaze.png",
+        "url": "g/Scary Maze Game.html"
+    },
+    {
+        "title": "Sniper Shot",
+        "description": "Sniper Shot: Bullet Time is a sniper shooting game where you take out enemies with precision. Use slow-motion shots to plan your attacks and complete challenging missions.",
+        "image": "images/snipyrep.jpeg",
+        "url": "g/snkpeshot.html"
+    },
+    {
+        "title": "Subway Surfers: Mexico",
+        "description": "Subway Surfers: Mexico takes you through colorful Mexican streets filled with trains and obstacles. Collect coins, dodge obstacles, and unlock new characters and hoverboards as you run.",
+        "image": "images/tacosubway.jpeg",
+        "url": "g/Subway Surfers: Mexico.html"
+    },
+    {
+        "title": "Troll Face Quest 1",
+        "description": "Troll Face Quest 1 is a puzzle comedy game packed with tricky levels and ridiculous humor. Solve weird challenges, expect the unexpected, and get ready to be trolled at every turn.",
+        "image": "images/troll1.jpeg",
+        "url": "g/Troll Face Quest 1.html"
+    },
+    {
+        "title": "Troll Face Quest 2",
+        "description": "Troll Face Quest 2 is a funny puzzle game full of tricky, absurd, and hilarious challenges to test your wits. Each level is packed with unexpected twists, clever tricks, and endless laughs.",
+        "image": "images/22guest.jpeg",
+        "url": "g/Troll Face Quest 2.html"
+    },
+    {
+        "title": "Troll Face Quest 3",
+        "description": "Troll Face Quest 3 is a wacky puzzle game full of outrageous and hilarious challenges. Every level surprises you with clever tricks, unexpected twists, and nonstop laughs.",
+        "image": "images/3questy.jpeg",
+        "url": "g/Troll Face Quest 3.html"
+    },
+    {
+        "title": "Troll Face Quest 4",
+        "description": "Troll Face Quest 4 is a crazy puzzle game packed with absurd and hilarious challenges. Each level is filled with tricky twists, funny surprises, and nonstop laughter.",
+        "image": "images/4guest2.jpg",
+        "url": "g/Troll Face Quest 4.html"
+    },
+    {
+        "title": "Troll Face Quest 5",
+        "description": "Troll Face Quest 5 is a wild puzzle game full of ridiculous and hilarious challenges. Every level is bursting with tricky twists, clever jokes, and endless laughs.",
+        "image": "images/5guests.jpeg",
+        "url": "g/Troll Face Quest 5.html"
+    },
+    {
+        "title": "Troll Face Quest 6",
+        "description": "Troll Face Quest 6 is a chaotic puzzle game full of outrageous and hilarious challenges. Each level is loaded with unexpected twists, tricky pranks, and nonstop laughter.",
+        "image": "images/4533js.jpg",
+        "url": "g/Troll Face Quest 6.html"
+    },
+    {
+        "title": "Troll Face Quest 7",
+        "description": "Troll Face Quest 7 is a hilarious puzzle game packed with absurd and tricky challenges. Every level surprises you with clever pranks, unexpected twists, and nonstop laughs.",
+        "image": "images/troll7.jpeg",
+        "url": "g/Troll Face Quest 7.html"
+    },
+    {
+        "title": "Troll Face Quest 8",
+        "description": "Troll Face Quest 8 is a wild puzzle game full of absurd, funny, and tricky challenges. Each level is filled with clever pranks, unexpected twists, and nonstop laughter.",
+        "image": "images/troll8.jpeg",
+        "url": "g/Troll Face Quest 8.html"
+    },
+    {
+        "title": "Troll Face Quest 9",
+        "description": "Troll Face Quest 9 is a crazy puzzle game packed with hilarious and tricky challenges. Every level is full of unexpected twists, clever pranks, and nonstop laughs.",
+        "image": "images/troll9.jpeg",
+        "url": "g/Troll Face Quest 9.html"
+    },
+    {
+        "title": "Troll Face Quest 10",
+        "description": "Troll Face Quest 10 is an outrageous puzzle game full of funny and tricky challenges. Each level is packed with clever pranks, unexpected twists, and nonstop laughter.",
+        "image": "images/troll10.jpeg",
+        "url": "g/Troll Face Quest 10.html"
+    },
+    {
+        "title": "Troll Face Quest 11",
+        "description": "Troll Face Quest 11 is a hilarious puzzle game full of absurd and tricky challenges. Every level surprises you with clever pranks, unexpected twists, and nonstop laughs.",
+        "image": "images/troll11.jpg",
+        "url": "g/addfTroll Face Quest 11.html"
+    },
+    {
+        "title": "Troll Face Quest 12",
+        "description": "Troll Face Quest 12 is a wild puzzle game packed with funny, tricky, and absurd challenges. Each level is full of clever pranks, unexpected twists, and nonstop laughter.",
+        "image": "images/troll12.webp",
+        "url": "g/Troll Face Quest 12.html"
+    },
+    {
+        "title": "Troll Face Quest 13",
+        "description": "Troll Face Quest 13 is a chaotic puzzle game full of hilarious and tricky challenges. Every level is packed with clever pranks, unexpected twists, and nonstop laughs.",
+        "image": "images/troll13.jpeg",
+        "url": "g/Troll Face Quest 13.html"
+    },
+    {
+        "title": "Twerk Race 3D",
+        "description": "Twerk Race 3D is a hilarious running game where you collect power-ups to grow your hips and out-twerk rivals at the finish line. Dash, dodge, and shake to victory in this wild dance showdown!",
+        "image": "images/twe.jpeg",
+        "url": "g/Twerk Race 3D.html"
+    },
+    {
+        "title": "Time Shooter 2",
+        "description": "Time Shooter 2 is a first-person shooter where time only moves when you do. Outsmart enemies by freezing time, dodging bullets, and using weapons strategically to clear each level.",
+        "image": "images/shooter22.jpg",
+        "url": "g/Time Shooter 2.html"
+    },
+    {
+        "title": "Tomb of the Mask",
+        "description": "Tomb of the Mask is an arcade-style maze game where a magical mask lets you climb walls and move at lightning speed. Navigate endless traps, enemies, and obstacles while collecting coins and power-ups.",
+        "image": "images/tomby.webp",
+        "url": "g/Tomb of the Mask.html"
+    },
+    {
+        "title": "Ultrakill",
+        "description": "ULTRAKILL is a blood-soaked, fast-paced retro FPS where style and speed mean survival. Rip through hordes of demons with brutal weapons, fluid movement, and nonstop carnage.",
+        "image": "images/6263452.jpeg",
+        "url": "g/Ultrakill.html"
+    },
+    {
+        "title": "Undertale Yellow",
+        "description": "Undertale Yellow is a fan-made prequel to Undertale starring Clover, the seventh fallen human. Explore the Underground, meet new characters, and decide between mercy or battle.",
+        "image": "images/undertale.jpeg",
+        "url": "g/Undertale Yellow.html"
+    },
+    {
+        "title": "Volley Random",
+        "description": "Volley Random is a wacky volleyball game where every match feels unpredictable. Jump, flip, and smash the ball with ragdoll physics that keep the chaos fun and hilarious.",
+        "image": "images/vollyballr.jpeg",
+        "url": "g/Volley Random.html"
+    },
+    {
+        "title": "Vex",
+        "description": "Vex is a challenging platformer where you navigate deadly traps and obstacles. Test your skills with precise jumps and speed through each level.",
+        "image": "images/vexx1.jpeg",
+        "url": "g/Vex.html"
+    },
+    {
+        "title": "Villager",
+        "description": "Villager is a sandbox simulation game where you build, trade, and explore your village. Manage resources, customize your home, and interact with quirky villagers.",
+        "image": "images/villager.png",
+        "url": "g/Villager.html"
+    },
+    {
+        "title": "Waterpool.io",
+        "description": "Waterpool.io is a fun multiplayer game where you splash, bump, and push others out of the pool. Stay afloat, outlast your rivals, and claim victory in the ultimate water brawl.",
+        "image": "images/poolllll32.jpeg",
+        "url": "g/Waterpool.io.html"
+    },
+    {
+        "title": "You vs. 100 Skibidi",
+        "description": "You vs. 100 Skibidi is a wild survival game where you face off against a swarm of chaotic Skibidi enemies. Fight, dodge, and outlast the madness to prove you are the last one standing.",
+        "image": "images/skibidi.jpeg",
+        "url": "g/You vs. 100 Skibidi.html"
+    },
+    {
+        "title": "Zen Word",
+        "description": "Zen Word is a relaxing puzzle game where you connect letters to form words and clear levels. Calm visuals and soothing gameplay make it the perfect way to unwind while sharpening your mind.",
+        "image": "images/zen.jpeg",
+        "url": "g/Zen Word.html"
+    },
+    {
+        "title": "Zuma",
+        "description": "Zuma is a puzzle game where you shoot colored balls to match three or more and stop the chain from reaching the end. Quick thinking and combos keep the action fast and exciting.",
+        "image": "images/zuma.jpeg",
+        "url": "g/Zuma.html"
+    }
+]

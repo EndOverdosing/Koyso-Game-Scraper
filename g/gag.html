@@ -1,0 +1,16 @@
+<iframe id="myFrame"
+	src="https://script.google.com/a/macros/husdstudent.com/s/AKfycbwK_YDMKEccZyVOz_fpe66G4Je4VyFPdT10OdaKpM699Utzbq41n2m6OXqAzpX0oqrLTA/exec"
+	frameborder="0" style="width: 100%; overflow: hidden;">
+</iframe>
+
+<script>
+	const iframe = document.getElementById('myFrame');
+  iframe.onload = () => {
+    try {
+      iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    } catch(e) {
+      console.log('if it dosnt auto fit, you device sucks buns');
+      iframe.style.height = '700px'
+    }
+  };
+</script>
