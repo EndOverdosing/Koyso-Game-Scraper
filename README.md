@@ -1,4 +1,4 @@
-![Vyla Games Logo](/images/github-banner.jpeg)
+![Vyla Games Logo](/images/github-banner.jpg)
 
 # Vyla Games
 
