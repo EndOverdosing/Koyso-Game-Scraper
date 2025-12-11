@@ -31,18 +31,30 @@ class KoysoScraper:
         self.automatic_download = False
 
     def fetch_page(self, url):
-        try:
-            time.sleep(self.request_delay)
-            request = urllib.request.Request(url)
-            response = self.opener.open(request)
-            content = response.read()
-            return content.decode('utf-8')
-        except urllib.error.HTTPError as e:
-            print(f"HTTP Error {e.code} fetching {url}")
-            return ""
-        except Exception as e:
-            print(f"Error fetching {url}: {e}")
-            return ""
+        max_retries = 5
+        retry_delay = 5
+        
+        for attempt in range(max_retries):
+            try:
+                time.sleep(self.request_delay)
+                request = urllib.request.Request(url)
+                response = self.opener.open(request)
+                content = response.read()
+                return content.decode('utf-8')
+            except urllib.error.HTTPError as e:
+                if e.code == 429 and attempt < max_retries - 1:
+                    print(f"HTTP 429 Too Many Requests on attempt {attempt + 1}, retrying in {retry_delay} seconds...")
+                    time.sleep(retry_delay)
+                    retry_delay *= 2
+                    continue
+                else:
+                    print(f"HTTP Error {e.code} fetching {url}")
+                    return ""
+            except Exception as e:
+                print(f"Error fetching {url}: {e}")
+                return ""
+        
+        return ""
 
     def get_all_games(self):
         search_url = f"{self.base_url}/?keywords=GTA"
