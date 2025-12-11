@@ -1,3 +1,5 @@
+![Koyso Game Scraper Logo](/images/github-banner.jpg)
+
 # Koyso Game Scraper
 
 A Python script to scrape games from [Koyso](https://koyso.to), view details, and retrieve final download links with optional automatic downloading.
