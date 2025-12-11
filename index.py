@@ -25,10 +25,10 @@ class KoysoScraper:
             ('Upgrade-Insecure-Requests', '1'),
         ]
         self.secret_key = "f6i6@m29r3fwi^yqd"
-        self.request_delay = 0        
+        self.request_delay = 0.05    
         self.display_images = True
         self.show_file_size = True
-        self.automatic_download = True
+        self.automatic_download = False
 
     def fetch_page(self, url):
         try:
@@ -45,6 +45,13 @@ class KoysoScraper:
             return ""
 
     def get_all_games(self):
+        search_url = f"{self.base_url}/?keywords=GTA"
+        print(f"Fetching GTA games from search...")
+        html_content = self.fetch_page(search_url)
+        
+        if html_content:
+            self._extract_games_from_page(html_content)
+        
         page = 1
         while True:
             url = f"{self.base_url}/?page={page}"
@@ -53,25 +60,11 @@ class KoysoScraper:
             if not html_content:
                 break
 
-            games_found = 0
-            game_item_pattern = r'<a class="game_item"[^>]*href="([^"]*)"[^>]*>.*?<img[^>]*data-src="([^"]*)"[^>]*>.*?<span[^>]*>([^<]*)</span>'
-            game_item_matches = re.findall(game_item_pattern, html_content,
-                                           re.DOTALL)
+            games_found = self._extract_games_from_page(html_content)
 
-            if not game_item_matches:
+            if games_found == 0:
                 print("No more games found.")
                 break
-
-            for game_url, image_url, game_title in game_item_matches:
-                game = {
-                    'title': html.unescape(game_title.strip()),
-                    'url': urllib.parse.urljoin(self.base_url,
-                                                game_url.strip()),
-                    'id': game_url.strip().split('/')[-1],
-                    'image_url': image_url
-                }
-                self.all_games.append(game)
-                games_found += 1
 
             print(f"Found {games_found} games on page {page}")
             page += 1
@@ -79,20 +72,51 @@ class KoysoScraper:
         print(f"Total games found: {len(self.all_games)}")
         return self.all_games
 
+    def _extract_games_from_page(self, html_content):
+        games_found = 0
+        game_item_pattern = r'<a class="game_item"[^>]*href="([^"]*)"[^>]*>.*?<img[^>]*(?:data-src|src)="([^"]*)"[^>]*>.*?<span[^>]*>([^<]*)</span>'
+        game_item_matches = re.findall(game_item_pattern, html_content, re.DOTALL)
+
+        if not game_item_matches:
+            return 0
+
+        for game_url, image_url, game_title in game_item_matches:
+            game = {
+                'title': html.unescape(game_title.strip()),
+                'url': urllib.parse.urljoin(self.base_url, game_url.strip()),
+                'id': game_url.strip().split('/')[-1],
+                'image_url': image_url
+            }
+            if game not in self.all_games:
+                self.all_games.append(game)
+                games_found += 1
+
+        return games_found
+
     def search_game(self, query):
         results = []
-        query_lower = query.lower()
+        query_lower = query.lower().strip()
+        
+        if not query_lower:
+            return results
+            
+        search_terms = []
+        if "gta" in query_lower:
+            search_terms = ["grand theft auto", "gta"]
+        elif " " in query_lower:
+            search_terms = query_lower.split()
+        else:
+            search_terms = [query_lower]
+        
         for game in self.all_games:
-            if query_lower in game['title'].lower():
-                results.append(game)
-
-        if not results:
-            words = query_lower.split()
-            for game in self.all_games:
-                title_lower = game['title'].lower()
-                if any(word in title_lower for word in words):
-                    results.append(game)
-
+            title_lower = game['title'].lower()
+            
+            for term in search_terms:
+                if term in title_lower:
+                    if game not in results:
+                        results.append(game)
+                    break
+        
         return results
 
     def get_game_details(self, game_url):
