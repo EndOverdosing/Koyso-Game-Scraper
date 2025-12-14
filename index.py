@@ -24,6 +24,24 @@ class KoysoScraper:
             ('Connection', 'keep-alive'),
             ('Upgrade-Insecure-Requests', '1'),
         ]
+        self.genres = {
+            '1': ('All Games', '/'),
+            '2': ('Action Games', '/category/action'),
+            '3': ('Adventure Games', '/category/adventure'),
+            '4': ('R18+', '/category/r18'),
+            '5': ('Shooting Games', '/category/shooting'),
+            '6': ('Casual Games', '/category/casual'),
+            '7': ('Sports Racing', '/category/sports_racing'),
+            '8': ('Simulation Business', '/category/simulation'),
+            '9': ('Role Playing', '/category/rpg'),
+            '10': ('Strategy Games', '/category/strategy'),
+            '11': ('Fighting Games', '/category/fighting'),
+            '12': ('Horror Games', '/category/horror'),
+            '13': ('Real-time strategy', '/category/rts'),
+            '14': ('Card Game', '/category/card'),
+            '15': ('Indie Games', '/category/indie'),
+            '16': ('LAN connection', '/category/lan')
+        }
         self.secret_key = "f6i6@m29r3fwi^yqd"
         self.request_delay = 0.05    
         self.display_images = True
@@ -31,58 +49,101 @@ class KoysoScraper:
         self.automatic_download = False
 
     def fetch_page(self, url):
-        max_retries = 5
-        retry_delay = 5
-        
-        for attempt in range(max_retries):
-            try:
-                time.sleep(self.request_delay)
-                request = urllib.request.Request(url)
-                response = self.opener.open(request)
-                content = response.read()
-                return content.decode('utf-8')
-            except urllib.error.HTTPError as e:
-                if e.code == 429 and attempt < max_retries - 1:
-                    print(f"HTTP 429 Too Many Requests on attempt {attempt + 1}, retrying in {retry_delay} seconds...")
-                    time.sleep(retry_delay)
-                    retry_delay *= 2
-                    continue
-                else:
-                    print(f"HTTP Error {e.code} fetching {url}")
-                    return ""
-            except Exception as e:
-                print(f"Error fetching {url}: {e}")
-                return ""
-        
-        return ""
+        try:
+            time.sleep(self.request_delay)
+            request = urllib.request.Request(url)
+            response = self.opener.open(request)
+            content = response.read()
+            return content.decode('utf-8')
+        except urllib.error.HTTPError as e:
+            print(f"HTTP Error {e.code} fetching {url}")
+            if e.code == 403:
+                print("Error 403: Access forbidden.")
+            elif e.code == 404:
+                print("Error 404: Page not found.")
+            elif e.code == 429:
+                print("Error 429: Too many requests. Try again later.")
+            return ""
+        except Exception as e:
+            print(f"Error fetching {url}: {e}")
+            return ""
 
-    def get_all_games(self):
-        search_url = f"{self.base_url}/?keywords=GTA"
-        print(f"Fetching GTA games from search...")
-        html_content = self.fetch_page(search_url)
+    def get_all_games(self, genre_id=None):
+        self.all_games = []
         
-        if html_content:
-            self._extract_games_from_page(html_content)
-        
+        if genre_id and genre_id in self.genres:
+            genre_name, genre_url = self.genres[genre_id]
+            base_url = f"{self.base_url}{genre_url}"
+            print(f"Fetching {genre_name} games...")
+            self._scrape_genre_pages(base_url, genre_name)
+        else:
+            search_url = f"{self.base_url}/?keywords=GTA"
+            print(f"Fetching GTA games from search...")
+            html_content = self.fetch_page(search_url)
+            if html_content:
+                self._extract_games_from_page(html_content)
+            
+            page = 1
+            while True:
+                url = f"{self.base_url}/?page={page}"
+                print(f"Fetching all games page {page}...")
+                html_content = self.fetch_page(url)
+                if not html_content:
+                    break
+
+                games_found = self._extract_games_from_page(html_content)
+
+                if games_found == 0:
+                    print("No more games found.")
+                    break
+
+                print(f"Found {games_found} games on page {page}")
+                page += 1
+
+        print(f"Total games found: {len(self.all_games)}")
+        return self.all_games
+
+    def _scrape_genre_pages(self, base_url, genre_name):
         page = 1
         while True:
-            url = f"{self.base_url}/?page={page}"
-            print(f"Fetching page {page}...")
+            if page == 1:
+                url = base_url
+            else:
+                url = f"{base_url}?page={page}"
+            
+            print(f"Fetching {genre_name} page {page}...")
             html_content = self.fetch_page(url)
+            
             if not html_content:
                 break
 
             games_found = self._extract_games_from_page(html_content)
-
+            
             if games_found == 0:
-                print("No more games found.")
+                print(f"No more games found in {genre_name}.")
                 break
-
+                
             print(f"Found {games_found} games on page {page}")
+            
+            if not self._has_next_page(html_content, page):
+                break
+                
             page += 1
 
-        print(f"Total games found: {len(self.all_games)}")
-        return self.all_games
+    def _has_next_page(self, html_content, current_page):
+        next_page_pattern = r'<a[^>]*href="[^"]*\?page={}"[^>]*>'.format(current_page + 1)
+        next_arrow_pattern = r'<a[^>]*href="[^"]*\?page={}"[^>]*class="anticon"[^>]*>'.format(current_page + 1)
+        
+        if re.search(next_page_pattern, html_content) or re.search(next_arrow_pattern, html_content):
+            return True
+        
+        pagination_text = re.search(r'<a>(\d+)/(\d+)</a>', html_content)
+        if pagination_text:
+            current, total = pagination_text.groups()
+            if int(current) < int(total):
+                return True
+        
+        return False
 
     def _extract_games_from_page(self, html_content):
         games_found = 0
@@ -242,9 +303,7 @@ class KoysoScraper:
                     "Error 403: Your device clock might be wrong, or request is blocked."
                 )
             elif e.code == 429:
-                print(
-                    "Error 429: Download rate limited (one every 5 minutes). Please wait."
-                )
+                print("Error 429: Too many requests.")
             return None
         except Exception as e:
             print(f"Error getting final URL: {e}")
@@ -269,96 +328,187 @@ class KoysoScraper:
             print(f"❌ Download failed: {e}")
             return False
 
+    def _process_game(self, game):
+        print(f"\nFetching details for: {game['title']}")
+        
+        details = self.get_game_details(game['url'])
+        
+        print("\n" + "="*70)
+        print(f"🎮 TITLE: {details.get('title', 'N/A')}")
+        print("-" * 70)
+        if details.get('description'):
+            print(f"📝 DESCRIPTION:")
+            print(details.get('description', 'No description available.'))
+            print("-" * 70)
+        
+        if self.show_file_size:
+            print(f"💾 FILE SIZE: {details.get('file_size', 'N/A')}")
+            print("-" * 70)
+        
+        if self.display_images:
+            if details.get('image_url'):
+                print(f"🖼️ COVER IMAGE URL: {details.get('image_url', 'N/A')}")
+            if game.get('image_url'):
+                print(f"🖼️ LIST IMAGE URL: {game.get('image_url', 'N/A')}")
+            print("-" * 70)
+        
+        if 'game_id' in details:
+            if self.automatic_download:
+                print("⏳ Fetching FINAL download link...")
+                final_url = self.get_final_download_url(details['game_id'])
+                if final_url:
+                    print(f"✅ FINAL DOWNLOAD LINK: {final_url}")
+                    print("Starting download...")
+                    self.download_file(final_url, f"{details.get('title', 'game')}.zip")
+                else:
+                    print("❌ Could not retrieve final download link.")
+                    print(f"🔗 Download page: {details.get('download_page', 'N/A')}")
+            else:
+                print("⏳ Fetching FINAL download link...")
+                final_url = self.get_final_download_url(details['game_id'])
+                if final_url:
+                    print(f"✅ FINAL DOWNLOAD LINK: {final_url}")
+                else:
+                    print("❌ Could not retrieve final download link.")
+                    print(f"🔗 Download page: {details.get('download_page', 'N/A')}")
+        else:
+            print("❌ Could not find game ID for download.")
+        print("="*70)
+        
+        input("\nPress Enter to continue...")
+
     def run(self):
         print("="*70)
         print("Koyso Game Scraper with Final Download Link")
         print("="*70)
         
-        print("\nLoading games from Koyso...")
-        self.get_all_games()
-
+        print("\nSelect genre to load games from:")
+        print("-"*70)
+        for key, (name, _) in self.genres.items():
+            print(f"{key}. {name}")
+        print("-"*70)
+        
+        while True:
+            choice = input("\nEnter genre number (or 'quit' to exit): ").strip()
+            
+            if choice.lower() == 'quit':
+                return
+            
+            if choice in self.genres:
+                print(f"\nLoading {self.genres[choice][0]} from Koyso...")
+                self.get_all_games(choice)
+                break
+            else:
+                print("Invalid selection. Please enter a valid number.")
+        
         if not self.all_games:
             print("Failed to load games. Exiting.")
             return
 
         print(f"\nSuccessfully loaded {len(self.all_games)} games.")
-
+        
         while True:
             print("\n" + "="*70)
-            search = input("Enter game name to search (or 'quit' to exit): ").strip()
-
-            if search.lower() == 'quit':
-                break
-
-            if not search:
-                print("Please enter a search term.")
-                continue
-
-            results = self.search_game(search)
-
-            if not results:
-                print("No games found. Try another search term.")
-                continue
-
-            print(f"\nFound {len(results)} result(s):")
-            for idx, game in enumerate(results, 1):
+            print("Loaded Games List:")
+            print("-" * 70)
+            for idx, game in enumerate(self.all_games, 1):
                 print(f"{idx}. {game['title']}")
-
-            try:
-                choice = int(input(f"\nSelect game number (1-{len(results)}): "))
-                if 1 <= choice <= len(results):
-                    selected = results[choice-1]
-                    print(f"\nFetching details for: {selected['title']}")
-
-                    details = self.get_game_details(selected['url'])
-
-                    print("\n" + "="*70)
-                    print(f"🎮 TITLE: {details.get('title', 'N/A')}")
-                    print("-" * 70)
-                    if details.get('description'):
-                        print(f"📝 DESCRIPTION:")
-                        print(details.get('description', 'No description available.'))
-                        print("-" * 70)
+            print("-" * 70)
+            
+            action = input("\nEnter 's' to search, game number to select, 'back' for another genre, or 'quit': ").strip()
+            
+            if action.lower() == 'quit':
+                break
+            elif action.lower() == 'back':
+                self.all_games = []
+                self.run()
+                return
+            elif action.lower() == 's':
+                search = input("Enter game name to search: ").strip()
+                if not search:
+                    print("Please enter a search term.")
+                    continue
                     
-                    if self.show_file_size:
-                        print(f"💾 FILE SIZE: {details.get('file_size', 'N/A')}")
-                        print("-" * 70)
+                results = self.search_game(search)
+                
+                if not results:
+                    print("No games found. Try another search term.")
+                    continue
                     
-                    if self.display_images:
-                        if details.get('image_url'):
-                            print(f"🖼️ COVER IMAGE URL: {details.get('image_url', 'N/A')}")
-                        if selected.get('image_url'):
-                            print(f"🖼️ LIST IMAGE URL: {selected.get('image_url', 'N/A')}")
-                        print("-" * 70)
-
-                    if 'game_id' in details:
-                        if self.automatic_download:
-                            print("⏳ Fetching FINAL download link...")
-                            final_url = self.get_final_download_url(details['game_id'])
-                            if final_url:
-                                print(f"✅ FINAL DOWNLOAD LINK: {final_url}")
-                                print("Starting download...")
-                                self.download_file(final_url, f"{details.get('title', 'game')}.zip")
-                            else:
-                                print("❌ Could not retrieve final download link.")
-                                print(f"🔗 Download page: {details.get('download_page', 'N/A')}")
-                        else:
-                            print("⏳ Fetching FINAL download link...")
-                            final_url = self.get_final_download_url(details['game_id'])
-                            if final_url:
-                                print(f"✅ FINAL DOWNLOAD LINK: {final_url}")
-                            else:
-                                print("❌ Could not retrieve final download link.")
-                                print(f"🔗 Download page: {details.get('download_page', 'N/A')}")
+                print(f"\nFound {len(results)} result(s):")
+                for idx, game in enumerate(results, 1):
+                    print(f"{idx}. {game['title']}")
+                
+                try:
+                    choice = int(input(f"\nSelect game number (1-{len(results)}): "))
+                    if 1 <= choice <= len(results):
+                        self._process_game(results[choice-1])
                     else:
-                        print("❌ Could not find game ID for download.")
-                    print("="*70)
+                        print("Invalid selection.")
+                except ValueError:
+                    print("Please enter a valid number.")
+                except Exception as e:
+                    print(f"Error: {e}")
+            else:
+                try:
+                    choice = int(action)
+                    if 1 <= choice <= len(self.all_games):
+                        self._process_game(self.all_games[choice-1])
+                    else:
+                        print(f"Invalid selection. Please enter a number between 1 and {len(self.all_games)}.")
+                except ValueError:
+                    print("Please enter a valid number, 's' to search, 'back', or 'quit'.")
+                except Exception as e:
+                    print(f"Error: {e}")
+
+    def _process_game(self, game):
+        print(f"\nFetching details for: {game['title']}")
+        
+        details = self.get_game_details(game['url'])
+        
+        print("\n" + "="*70)
+        print(f"🎮 TITLE: {details.get('title', 'N/A')}")
+        print("-" * 70)
+        if details.get('description'):
+            print(f"📝 DESCRIPTION:")
+            print(details.get('description', 'No description available.'))
+            print("-" * 70)
+        
+        if self.show_file_size:
+            print(f"💾 FILE SIZE: {details.get('file_size', 'N/A')}")
+            print("-" * 70)
+        
+        if self.display_images:
+            if details.get('image_url'):
+                print(f"🖼️ COVER IMAGE URL: {details.get('image_url', 'N/A')}")
+            if game.get('image_url'):
+                print(f"🖼️ LIST IMAGE URL: {game.get('image_url', 'N/A')}")
+            print("-" * 70)
+        
+        if 'game_id' in details:
+            if self.automatic_download:
+                print("⏳ Fetching FINAL download link...")
+                final_url = self.get_final_download_url(details['game_id'])
+                if final_url:
+                    print(f"✅ FINAL DOWNLOAD LINK: {final_url}")
+                    print("Starting download...")
+                    self.download_file(final_url, f"{details.get('title', 'game')}.zip")
                 else:
-                    print("Invalid selection.")
-            except ValueError:
-                print("Please enter a valid number.")
-            except Exception as e:
-                print(f"Error: {e}")
+                    print("❌ Could not retrieve final download link.")
+                    print(f"🔗 Download page: {details.get('download_page', 'N/A')}")
+            else:
+                print("⏳ Fetching FINAL download link...")
+                final_url = self.get_final_download_url(details['game_id'])
+                if final_url:
+                    print(f"✅ FINAL DOWNLOAD LINK: {final_url}")
+                else:
+                    print("❌ Could not retrieve final download link.")
+                    print(f"🔗 Download page: {details.get('download_page', 'N/A')}")
+        else:
+            print("❌ Could not find game ID for download.")
+        print("="*70)
+        
+        input("\nPress Enter to continue...")
 
 def main():
     scraper = KoysoScraper()
