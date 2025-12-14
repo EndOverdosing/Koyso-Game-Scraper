@@ -40,7 +40,8 @@ class KoysoScraper:
             '13': ('Real-time strategy', '/category/rts'),
             '14': ('Card Game', '/category/card'),
             '15': ('Indie Games', '/category/indie'),
-            '16': ('LAN connection', '/category/lan')
+            '16': ('LAN connection', '/category/lan'),
+            '17': ('Search Games', '/?keywords=')
         }
         self.secret_key = "f6i6@m29r3fwi^yqd"
         self.request_delay = 0.05    
@@ -77,12 +78,6 @@ class KoysoScraper:
             print(f"Fetching {genre_name} games...")
             self._scrape_genre_pages(base_url, genre_name)
         else:
-            search_url = f"{self.base_url}/?keywords=GTA"
-            print(f"Fetching GTA games from search...")
-            html_content = self.fetch_page(search_url)
-            if html_content:
-                self._extract_games_from_page(html_content)
-            
             page = 1
             while True:
                 url = f"{self.base_url}/?page={page}"
@@ -103,6 +98,35 @@ class KoysoScraper:
         print(f"Total games found: {len(self.all_games)}")
         return self.all_games
 
+    def get_all_games_search(self, base_url, search_term):
+        self.all_games = []
+        page = 1
+        
+        while True:
+            if page == 1:
+                url = base_url
+            else:
+                url = f"{base_url}&page={page}"
+            
+            print(f"Fetching search results page {page} for '{search_term}'...")
+            html_content = self.fetch_page(url)
+            
+            if not html_content:
+                break
+
+            games_found = self._extract_games_from_page(html_content)
+            
+            if games_found == 0:
+                print(f"No more games found for '{search_term}'.")
+                break
+                
+            print(f"Found {games_found} games on page {page}")
+            
+            if not self._has_next_page(html_content, page):
+                break
+                
+            page += 1
+    
     def _scrape_genre_pages(self, base_url, genre_name):
         page = 1
         while True:
@@ -378,6 +402,104 @@ class KoysoScraper:
         input("\nPress Enter to continue...")
 
     def run(self):
+        print("="*70)
+        print("Koyso Game Scraper with Final Download Link")
+        print("="*70)
+        
+        print("\nSelect genre to load games from:")
+        print("-"*70)
+        for key, (name, _) in self.genres.items():
+            print(f"{key}. {name}")
+        print("-"*70)
+        
+        while True:
+            choice = input("\nEnter genre number (or 'quit' to exit): ").strip()
+            
+            if choice.lower() == 'quit':
+                return
+            
+            if choice == '17':
+                search_term = input("Enter game name to search: ").strip()
+                if not search_term:
+                    print("Please enter a search term.")
+                    continue
+                
+                encoded_term = urllib.parse.quote(search_term)
+                search_url = f"{self.base_url}/?keywords={encoded_term}"
+                print(f"\nSearching for '{search_term}' on Koyso...")
+                self.get_all_games_search(search_url, search_term)
+                
+                if not self.all_games:
+                    print(f"No games found for '{search_term}'.")
+                    continue
+                break
+            
+            if choice in self.genres:
+                print(f"\nLoading {self.genres[choice][0]} from Koyso...")
+                self.get_all_games(choice)
+                break
+            else:
+                print("Invalid selection. Please enter a valid number.")
+        
+        if not self.all_games:
+            print("Failed to load games. Exiting.")
+            return
+
+        print(f"\nSuccessfully loaded {len(self.all_games)} games.")
+        
+        while True:
+            print("\n" + "="*70)
+            print("Loaded Games List:")
+            print("-" * 70)
+            for idx, game in enumerate(self.all_games, 1):
+                print(f"{idx}. {game['title']}")
+            print("-" * 70)
+            
+            action = input("\nEnter 's' to search, game number to select, 'back' for another genre, or 'quit': ").strip()
+            
+            if action.lower() == 'quit':
+                break
+            elif action.lower() == 'back':
+                self.all_games = []
+                self.run()
+                return
+            elif action.lower() == 's':
+                search = input("Enter game name to search: ").strip()
+                if not search:
+                    print("Please enter a search term.")
+                    continue
+                    
+                results = self.search_game(search)
+                
+                if not results:
+                    print("No games found. Try another search term.")
+                    continue
+                    
+                print(f"\nFound {len(results)} result(s):")
+                for idx, game in enumerate(results, 1):
+                    print(f"{idx}. {game['title']}")
+                
+                try:
+                    choice = int(input(f"\nSelect game number (1-{len(results)}): "))
+                    if 1 <= choice <= len(results):
+                        self._process_game(results[choice-1])
+                    else:
+                        print("Invalid selection.")
+                except ValueError:
+                    print("Please enter a valid number.")
+                except Exception as e:
+                    print(f"Error: {e}")
+            else:
+                try:
+                    choice = int(action)
+                    if 1 <= choice <= len(self.all_games):
+                        self._process_game(self.all_games[choice-1])
+                    else:
+                        print(f"Invalid selection. Please enter a number between 1 and {len(self.all_games)}.")
+                except ValueError:
+                    print("Please enter a valid number, 's' to search, 'back', or 'quit'.")
+                except Exception as e:
+                    print(f"Error: {e}")
         print("="*70)
         print("Koyso Game Scraper with Final Download Link")
         print("="*70)
