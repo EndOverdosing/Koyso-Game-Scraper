@@ -14,6 +14,7 @@
     <link rel="manifest" href="/manifest.webmanifest">
     <meta name="theme-color" content="#050505">
 
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Vyla">
@@ -178,6 +179,138 @@
         const greetingText = document.getElementById('greeting-text');
         const minimalHeroContent = document.getElementById('minimalHeroContent');
 
+        let mouseMoveRaf;
+
+        function handleGlobalMouseMove(e) {
+            if (mouseMoveRaf) return;
+            mouseMoveRaf = requestAnimationFrame(() => {
+                const x = e.clientX || (e.touches && e.touches[0].clientX);
+                const y = e.clientY || (e.touches && e.touches[0].clientY);
+                if (x !== undefined && y !== undefined) {
+                    document.documentElement.style.setProperty('--cursor-x', `${x}px`);
+                    document.documentElement.style.setProperty('--cursor-y', `${y}px`);
+                    document.documentElement.style.setProperty('--cursor-opacity', '1');
+                }
+                mouseMoveRaf = null;
+            });
+        }
+
+        function handleGlobalMouseLeave() {
+            document.documentElement.style.setProperty('--cursor-opacity', '0');
+        }
+
+        function addInteractiveBorderListeners(element) {
+            let rect = null;
+            let rafId = null;
+            let leaveTimeout;
+
+            const updateRect = () => {
+                rect = element.getBoundingClientRect();
+            };
+
+            const handleMove = (clientX, clientY) => {
+                clearTimeout(leaveTimeout);
+                if (!rect) updateRect();
+
+                if (rafId) return;
+
+                rafId = requestAnimationFrame(() => {
+                    const x = clientX - rect.left;
+                    const y = clientY - rect.top;
+                    element.style.setProperty('--x', `${x}px`);
+                    element.style.setProperty('--y', `${y}px`);
+                    element.style.setProperty('--opacity', '1');
+                    rafId = null;
+                });
+            };
+
+            const handleLeave = () => {
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = null;
+                element.style.setProperty('--opacity', '0');
+            };
+
+            element.addEventListener('mouseenter', updateRect);
+            element.addEventListener('mousemove', e => handleMove(e.clientX, e.clientY));
+            element.addEventListener('mouseleave', handleLeave);
+
+            element.addEventListener('touchstart', e => {
+                updateRect();
+                handleMove(e.touches[0].clientX, e.touches[0].clientY);
+            }, { passive: true });
+
+            element.addEventListener('touchmove', e => handleMove(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+
+            element.addEventListener('touchend', () => {
+                leaveTimeout = setTimeout(handleLeave, 500);
+            });
+
+            element.addEventListener('touchcancel', handleLeave);
+        }
+
+        function applyInteractiveBorders() {
+            const elements = [
+                ...document.querySelectorAll('.genre-pill'),
+                ...document.querySelectorAll('.hero-search-wrapper'),
+                ...document.querySelectorAll('.sticky-search .hero-search-wrapper'),
+                ...document.querySelectorAll('.details-overlay-pane'),
+                ...document.querySelectorAll('.download-btn')
+            ];
+
+            elements.forEach(element => {
+                if (element.dataset.interactiveBorderInit) return;
+
+                let rect = null;
+                let rafId = null;
+                let leaveTimeout;
+
+                const updateRect = () => {
+                    rect = element.getBoundingClientRect();
+                };
+
+                const handleMove = (clientX, clientY) => {
+                    clearTimeout(leaveTimeout);
+                    if (!rect) updateRect();
+
+                    if (rafId) return;
+
+                    rafId = requestAnimationFrame(() => {
+                        const x = clientX - rect.left;
+                        const y = clientY - rect.top;
+                        element.style.setProperty('--x', `${x}px`);
+                        element.style.setProperty('--y', `${y}px`);
+                        element.style.setProperty('--opacity', '1');
+                        rafId = null;
+                    });
+                };
+
+                const handleLeave = () => {
+                    if (rafId) cancelAnimationFrame(rafId);
+                    rafId = null;
+                    element.style.setProperty('--opacity', '0');
+                };
+
+                element.addEventListener('mouseenter', updateRect);
+                element.addEventListener('mousemove', e => handleMove(e.clientX, e.clientY));
+                element.addEventListener('mouseleave', handleLeave);
+
+                element.addEventListener('touchstart', e => {
+                    updateRect();
+                    handleMove(e.touches[0].clientX, e.touches[0].clientY);
+                }, { passive: true });
+
+                element.addEventListener('touchmove', e => handleMove(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+
+                element.addEventListener('touchend', () => {
+                    leaveTimeout = setTimeout(handleLeave, 500);
+                });
+
+                element.addEventListener('touchcancel', handleLeave);
+
+                element.dataset.interactiveBorderInit = 'true';
+            });
+        }
+
         function updateTimeBasedGreeting() {
             if (!greetingText) return;
             if (cachedGreeting) {
@@ -334,6 +467,10 @@
             setTimeout(() => {
                 const pane = document.querySelector('.details-overlay-pane');
                 if (pane) pane.style.transform = window.innerWidth <= 768 ? 'none' : 'translate(-50%, -50%) scale(1)';
+
+                requestAnimationFrame(() => {
+                    applyInteractiveBorders();
+                });
             }, 10);
 
             axios.get(`/api/game/${gameId}`)
@@ -455,44 +592,57 @@
             const downloadText = document.getElementById('downloadText');
             const downloadSpinner = document.getElementById('downloadSpinner');
             const debugMessage = document.getElementById('debugMessage');
+
+            console.log('[DEBUG] Fetching download URL for game:', gameId);
+
             downloadBtn.disabled = true;
             downloadSpinner.style.display = 'block';
             downloadText.textContent = 'Fetching link...';
             debugMessage.style.display = 'block';
             debugMessage.textContent = 'Contacting download server...';
             debugMessage.style.color = 'var(--secondary-text-color)';
+
             try {
+                console.log('[DEBUG] Sending request to /api/download/' + gameId);
                 const response = await axios.get(`/api/download/${gameId}`);
+                console.log('[DEBUG] Response received:', response.data);
+
                 if (response.data.url && response.data.url !== 'rate_limited') {
-                    downloadText.textContent = 'Download Now';
+                    const downloadUrl = response.data.url;
+                    console.log('[DEBUG] Download URL obtained:', downloadUrl);
+
                     downloadSpinner.style.display = 'none';
-                    debugMessage.textContent = 'Link fetched successfully! Click Download Now to start.';
+                    downloadText.textContent = 'Download Now';
+                    debugMessage.innerHTML = 'Link ready! <a href="' + downloadUrl + '" download style="color: #4ade80; text-decoration: underline;">Click here to download</a> or use the button.';
                     debugMessage.style.color = '#4ade80';
+
+                    downloadBtn.disabled = false;
                     downloadBtn.onclick = function () {
-                        const a = document.createElement('a');
-                        a.href = response.data.url;
-                        a.download = `${gameTitle.replace(/[<>:"/\\|?*]/g, '_')}.zip`;
-                        a.target = '_blank';
-                        a.click();
-                        downloadText.textContent = 'Downloading...';
-                        downloadBtn.disabled = true;
-                        debugMessage.textContent = 'Download started in new tab. If blocked, check your popup settings.';
+                        console.log('[DEBUG] Opening download URL');
+                        window.location.href = downloadUrl;
+
+                        downloadText.textContent = 'Download Started!';
+                        debugMessage.textContent = 'Download should begin shortly. Check your downloads folder.';
+                        debugMessage.style.color = '#4ade80';
+
                         setTimeout(() => {
                             downloadText.textContent = 'Fetch Download Link';
-                            downloadBtn.disabled = false;
                             downloadBtn.onclick = () => getDownloadUrl(gameId, gameTitle);
-                            debugMessage.style.display = 'none';
-                        }, 5000);
+                            debugMessage.textContent = '';
+                        }, 3000);
                     };
+
                 } else if (response.data.error === 'rate_limited') {
+                    console.log('[DEBUG] Rate limited by server');
                     downloadSpinner.style.display = 'none';
                     downloadBtn.classList.add('rate-limited');
-                    let countdown = 30;
-                    debugMessage.textContent = `Rate limited by server. Waiting ${countdown} seconds...`;
+                    let countdown = 60;
+                    debugMessage.textContent = `Rate limited by Koyso server. Please wait ${countdown} seconds...`;
                     debugMessage.style.color = '#f87171';
+
                     const countdownInterval = setInterval(() => {
-                        downloadText.textContent = `Rate limited (${countdown}s)`;
-                        debugMessage.textContent = `Rate limited by server. Waiting ${countdown} seconds...`;
+                        downloadText.textContent = `Wait (${countdown}s)`;
+                        debugMessage.textContent = `Rate limited by Koyso server. Please wait ${countdown} seconds...`;
                         countdown--;
                         if (countdown < 0) {
                             clearInterval(countdownInterval);
@@ -506,15 +656,36 @@
                     throw new Error('No download URL received');
                 }
             } catch (error) {
+                console.error('[DEBUG] Error fetching download:', error);
                 downloadSpinner.style.display = 'none';
                 downloadText.textContent = 'Failed';
-                debugMessage.textContent = error.response?.status === 429 ? 'Too many requests. Please wait.' : 'Server error. Please try again.';
-                debugMessage.style.color = '#f87171';
-                setTimeout(() => {
-                    downloadText.textContent = 'Fetch Download Link';
-                    downloadBtn.disabled = false;
-                    debugMessage.style.display = 'none';
-                }, 3000);
+
+                if (error.response?.data?.error === 'cooldown') {
+                    const waitTime = error.response.data.wait || 10;
+                    debugMessage.textContent = `Please wait ${waitTime} seconds between download requests.`;
+                    debugMessage.style.color = '#f87171';
+                    setTimeout(() => {
+                        downloadText.textContent = 'Fetch Download Link';
+                        downloadBtn.disabled = false;
+                        debugMessage.style.display = 'none';
+                    }, waitTime * 1000);
+                } else if (error.response?.status === 429) {
+                    debugMessage.textContent = 'Too many requests. Server is rate limiting. Wait 60 seconds.';
+                    debugMessage.style.color = '#f87171';
+                    setTimeout(() => {
+                        downloadText.textContent = 'Fetch Download Link';
+                        downloadBtn.disabled = false;
+                        debugMessage.style.display = 'none';
+                    }, 60000);
+                } else {
+                    debugMessage.textContent = 'Server error. Please try again.';
+                    debugMessage.style.color = '#f87171';
+                    setTimeout(() => {
+                        downloadText.textContent = 'Fetch Download Link';
+                        downloadBtn.disabled = false;
+                        debugMessage.style.display = 'none';
+                    }, 3000);
+                }
             }
         }
 

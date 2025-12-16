@@ -44,6 +44,8 @@ class VylaScraper:
         }
         self.secret_key = "f6i6@m29r3fwi^yqd"
         self.request_delay = 0.05
+        self.last_download_request = {}
+        self.download_cooldown = 10
 
     def fetch_page(self, url):
         try:
@@ -185,14 +187,31 @@ class VylaScraper:
         return 123456789
 
     def get_final_download_url(self, game_id):
+        current_time = time.time()
+        if game_id in self.last_download_request:
+            time_since_last = current_time - self.last_download_request[game_id]
+            if time_since_last < self.download_cooldown:
+                wait_time = self.download_cooldown - time_since_last
+                print(f"[DEBUG] Cooldown active. Wait {wait_time:.1f}s before retrying game {game_id}")
+                return "cooldown"
+        
         download_page_url = f"{self.base_url}/download/{game_id}"
         html_content = self.fetch_page(download_page_url)
         if not html_content:
+            print(f"[DEBUG] Failed to fetch download page for game {game_id}")
             return None
+
+        print(f"[DEBUG] Successfully fetched download page for game {game_id}")
+
+        time.sleep(2)
 
         timestamp = str(int(time.time()))
         secret_hash = self.generate_hash(timestamp, game_id)
         canvas_id = self.get_canvas_fingerprint()
+
+        print(f"[DEBUG] Generated timestamp: {timestamp}")
+        print(f"[DEBUG] Generated hash: {secret_hash}")
+        print(f"[DEBUG] Canvas ID: {canvas_id}")
 
         api_url = f"{self.base_url}/api/getGamesDownloadUrl"
         post_data = urllib.parse.urlencode({
@@ -214,28 +233,40 @@ class VylaScraper:
             })
 
         try:
+            print(f"[DEBUG] Sending request to API: {api_url}")
             response = self.opener.open(request)
             response_data = response.read().decode('utf-8')
+            
+            self.last_download_request[game_id] = current_time
+            
+            print(f"[DEBUG] API Response (first 200 chars): {response_data[:200]}")
 
             if response_data.startswith('http'):
+                print(f"[DEBUG] Direct URL received: {response_data}")
                 return response_data
 
             try:
                 json_data = json.loads(response_data)
                 if isinstance(json_data, str) and json_data.startswith('http'):
+                    print(f"[DEBUG] JSON string URL: {json_data}")
                     return json_data
                 elif isinstance(json_data, dict) and 'url' in json_data:
+                    print(f"[DEBUG] JSON object URL: {json_data['url']}")
                     return json_data['url']
             except:
                 pass
 
+            print(f"[DEBUG] Returning raw response: {response_data}")
             return response_data
 
         except urllib.error.HTTPError as e:
+            print(f"[DEBUG] HTTP Error {e.code}: {e.reason}")
             if e.code == 429:
+                self.last_download_request[game_id] = current_time + 60
                 return "rate_limited"
             return None
         except Exception as e:
+            print(f"[DEBUG] Exception occurred: {str(e)}")
             return None
 
 scraper = VylaScraper()
@@ -325,7 +356,9 @@ def get_game(game_id):
 @rate_limit_check
 def get_download_url(game_id):
     final_url = scraper.get_final_download_url(game_id)
-    if final_url == "rate_limited":
+    if final_url == "cooldown":
+        return jsonify({'error': 'cooldown', 'wait': scraper.download_cooldown}), 429
+    elif final_url == "rate_limited":
         response = jsonify({'error': 'rate_limited'})
         response.set_cookie('rate_limited', 'true', max_age=60)
         return response, 429
