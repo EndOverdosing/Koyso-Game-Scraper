@@ -1,13 +1,13 @@
-![Koyso Game Scraper Logo](/images/github-banner.jpg)
+![Vyla Game Scraper Logo](/images/github-banner.jpg)
 
-# Koyso Game Scraper
+# Vyla Game Scraper
 
-A Python script to scrape games from [Koyso](https://koyso.to), view details, and retrieve final download links with optional automatic downloading. Now also includes a dynamic frontend HTML interface.
+A Python script to scrape games from [Vyla](https://koyso.to), view details, and retrieve final download links with optional automatic downloading. Now also includes a dynamic frontend HTML interface.
 
 
 ## Features
 
-* Scrape all games from Koyso with pagination support.
+* Scrape all games from Vyla with pagination support.
 * Search games by title or keywords.
 * Retrieve game details including title, description, file size, and cover image.
 * Generate final download links using timestamp and secret key.
@@ -30,7 +30,7 @@ A Python script to scrape games from [Koyso](https://koyso.to), view details, an
 1. Run the script:
 
 ```bash
-python koyso_scraper.py
+python Vyla_scraper.py
 ````
 
 2. Follow prompts:

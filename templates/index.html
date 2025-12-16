@@ -4,825 +4,631 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koyso</title>
+    <title>Vyla Games - Free Game Downloads</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#050505">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Vyla">
+
+    <meta name="msapplication-TileColor" content="#050505">
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        body {
-            background: #0f0f0f;
-            color: #f0f0f0;
-            min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-        }
+    <link rel="stylesheet" href="/styling/keyframes.css" />
+    <link rel="stylesheet" href="/styling/index.css">
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    <meta name="description"
+        content="Download free games with Vyla Games. No limits, no restrictions. Browse thousands of games across all genres.">
+    <meta name="keywords" content="free games, game downloads, Vyla games, PC games, indie games, action games">
+    <meta name="author" content="Vyla Team">
 
-        header {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #222;
-        }
+    <meta property="og:title" content="Vyla Games - Free Game Downloads">
+    <meta property="og:description"
+        content="Discover and download your favorite games for free. No limits, no restrictions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vyla-games.vercel.app/">
 
-        h1 {
-            font-size: 32px;
-            font-weight: 400;
-            letter-spacing: -0.5px;
-            margin-bottom: 24px;
-            color: #fff;
-        }
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vyla Games - Free Game Downloads">
+    <meta name="twitter:description" content="Discover and download your favorite games for free.">
 
-        .controls {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        select,
-        input {
-            padding: 10px 16px;
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            color: #f0f0f0;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: border 0.2s;
-        }
-
-        select {
-            min-width: 160px;
-        }
-
-        select:hover,
-        input:hover {
-            border-color: #3a3a3a;
-        }
-
-        select:focus,
-        input:focus {
-            outline: none;
-            border-color: #4a4a4a;
-        }
-
-        .search-box {
-            flex: 1;
-            max-width: 400px;
-        }
-
-        .search-box input {
-            width: 100%;
-        }
-
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 16px;
-            margin-bottom: 40px;
-        }
-
-        .game-card {
-            background: #1a1a1a;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.2s;
-            border: 1px solid #252525;
-        }
-
-        .game-card:hover {
-            transform: translateY(-2px);
-            border-color: #3a3a3a;
-        }
-
-        .game-image {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            background: #222;
-            display: block;
-        }
-
-        .game-title {
-            padding: 16px;
-            font-size: 14px;
-            line-height: 1.4;
-            color: #ccc;
-            font-weight: 400;
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-            margin-top: 40px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background: #2a2a2a;
-            border: 1px solid #3a3a3a;
-            color: #f0f0f0;
-            border-radius: 6px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        button:hover:not(:disabled) {
-            background: #333;
-        }
-
-        button:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .page-info {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.95);
-            display: none;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: #1a1a1a;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            height: auto !important;
-            transform: translate(-50%, -50%);
-        }
-
-        @media (max-width: 768px) {
-            .modal-content {
-                width: 100vw !important;
-                height: 100vw !important;
-                min-width: 100%;
-                min-height: 100%;
-                overflow-y: auto;
-                border-radius: 12px;
-                margin: 40px auto;
-                border: 1px solid #2a2a2a;
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Vyla Games",
+        "url": "https://vyla-games.vercel.app/",
+        "description": "Discover and download your favorite games for free. No limits, no restrictions.",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Vyla Games",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://vyla-games.vercel.app/icons/icon-192x192.png"
             }
         }
-
-        .modal-header {
-            padding: 24px;
-            border-bottom: 1px solid #2a2a2a;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            position: sticky;
-            top: 0;
-            background: #1a1a1a;
-            z-index: 10;
-        }
-
-        .modal-header h2 {
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 1.4;
-            color: #fff;
-            flex: 1;
-            margin-right: 20px;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            color: #666;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .close-modal:hover {
-            color: #f0f0f0;
-        }
-
-        .modal-body {
-            padding: 24px;
-        }
-
-        .game-image-large {
-            width: 100%;
-            max-height: 300px;
-            object-fit: contain;
-            background: #222;
-            border-radius: 4px;
-            margin-bottom: 24px;
-        }
-
-        .game-info {
-            margin-bottom: 24px;
-        }
-
-        .info-row {
-            display: flex;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #2a2a2a;
-        }
-
-        .info-label {
-            width: 80px;
-            color: #888;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        .info-value {
-            flex: 1;
-            color: #ddd;
-            font-size: 14px;
-        }
-
-        .game-description {
-            line-height: 1.6;
-            color: #aaa;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
-
-        .download-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px;
-            background: #2a2a2a;
-            border: 1px solid #3a3a3a;
-            color: #f0f0f0;
-            border-radius: 6px;
-            font-size: 15px;
-            cursor: pointer;
-            transition: all 0.2s;
-            width: 100%;
-            font-weight: 500;
-        }
-
-        .download-btn:hover:not(:disabled) {
-            background: #333;
-            border-color: #4a4a4a;
-        }
-
-        .download-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .download-btn-content {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .download-text {
-            font-size: 15px;
-        }
-
-        .download-size {
-            color: #888;
-            font-size: 13px;
-            margin-left: 8px;
-        }
-
-        .loading-spinner {
-            width: 18px;
-            height: 18px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-top-color: #fff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        .rate-limited-btn {
-            background: #3a1a1a;
-            border-color: #5a2a2a;
-            color: #ff6b6b;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .skeleton {
-            background: linear-gradient(90deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%);
-            background-size: 200% 100%;
-            animation: loading 1.2s ease-in-out infinite;
-            border-radius: 4px;
-        }
-
-        @keyframes loading {
-            0% {
-                background-position: -200px 0;
-            }
-
-            100% {
-                background-position: calc(200px + 100%) 0;
-            }
-        }
-
-        .skeleton-game-card {
-            background: #1a1a1a;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #252525;
-        }
-
-        .skeleton-image {
-            width: 100%;
-            height: 320px;
-            background: #222;
-        }
-
-        .skeleton-title {
-            padding: 16px;
-            height: 40px;
-            margin: 0;
-            border-radius: 4px;
-        }
-
-        .skeleton-details {
-            margin-bottom: 20px;
-        }
-
-        .skeleton-row {
-            height: 16px;
-            margin-bottom: 12px;
-            border-radius: 2px;
-        }
-
-        .skeleton-row.short {
-            width: 40%;
-        }
-
-        .skeleton-row.medium {
-            width: 60%;
-        }
-
-        .skeleton-description {
-            height: 80px;
-            border-radius: 4px;
-            margin-bottom: 24px;
-        }
-
-        .skeleton-btn {
-            height: 48px;
-            border-radius: 6px;
-        }
-
-        .skeleton-large-image {
-            height: 300px;
-            border-radius: 4px;
-            margin-bottom: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 16px;
-            }
-
-            .games-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 12px;
-            }
-
-            .game-image {
-                height: 240px;
-            }
-
-            .skeleton-image {
-                height: 240px;
-            }
-
-            .controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .search-box {
-                max-width: 100%;
-            }
-
-            select {
-                width: 100%;
-            }
-
-            .modal-header {
-                padding: 20px;
-            }
-
-            .modal-body {
-                padding: 20px;
-            }
-
-            .game-image-large {
-                max-height: 200px;
-            }
-
-            .skeleton-large-image {
-                height: 200px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 28px;
-            }
-
-            .games-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            }
-
-            .game-image {
-                height: 200px;
-            }
-
-            .skeleton-image {
-                height: 200px;
-            }
-
-            .game-title {
-                padding: 12px;
-                font-size: 13px;
-            }
-        }
-
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            color: #666;
-            font-size: 15px;
-        }
-
-        .error-message {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            color: #ff6b6b;
-            font-size: 14px;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #3a3a3a;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4a4a4a;
-        }
-    </style>
+    }
+    </script>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>Koyso</h1>
-            <div class="controls">
-                <select id="genreSelect">
-                    <option value="1">All Games</option>
-                    <option value="2">Action</option>
-                    <option value="3">Adventure</option>
-                    <option value="4">R18+</option>
-                    <option value="5">Shooting</option>
-                    <option value="6">Casual</option>
-                    <option value="7">Sports</option>
-                    <option value="8">Simulation</option>
-                    <option value="9">RPG</option>
-                    <option value="10">Strategy</option>
-                    <option value="11">Fighting</option>
-                    <option value="12">Horror</option>
-                    <option value="13">RTS</option>
-                    <option value="14">Card</option>
-                    <option value="15">Indie</option>
-                    <option value="16">LAN</option>
-                </select>
+    <div id="minimal-hero-container">
+        <div class="hero-fade-top"></div>
+        <div id="hero-particles"></div>
+        <div class="hero-fade-bottom"></div>
 
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search games...">
-                </div>
+        <div class="minimal-hero-content" id="minimalHeroContent">
+            <h1 id="greeting-text">Find your next game</h1>
+            <div class="hero-search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="heroSearchInput" placeholder="Search for games...">
             </div>
-        </header>
-
-        <div class="games-grid" id="gamesGrid"></div>
-
-        <div class="pagination" id="pagination">
-            <button id="prevBtn" disabled>Previous</button>
-            <div class="page-info" id="pageInfo">Page 1</div>
-            <button id="nextBtn" disabled>Next</button>
         </div>
     </div>
 
-    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="navbar-wrapper">
+        <nav class="navbar" id="mainNavbar">
+            <div class="nav-group nav-left">
+                <a class="navbar-brand-button" id="navbarBrandAndBack" aria-label="Home" href="/">
+                    <span class="navbar-logo">
+                        <img src="/favicon.ico" alt="Vyla Logo">
+                    </span>
+                    <i class="fas fa-arrow-left back-arrow-icon"></i>
+                    <span class="brand-text">Vyla</span>
+                </a>
+            </div>
+
+            <div class="nav-group nav-right">
+                <a href="https://discord.gg/5eqRhKeywG" target="_blank" rel="noopener noreferrer"
+                    class="nav-icon-button discord-button" aria-label="Join our Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sticky-search">
+            <div class="hero-search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="stickySearchInput" placeholder="Search for games...">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="genres-scroll" id="genresScroll">
+            <div class="genre-pill active" data-genre="1">All Games</div>
+            <div class="genre-pill" data-genre="2">Action</div>
+            <div class="genre-pill" data-genre="3">Adventure</div>
+            <div class="genre-pill" data-genre="4">R18+</div>
+            <div class="genre-pill" data-genre="5">Shooting</div>
+            <div class="genre-pill" data-genre="6">Casual</div>
+            <div class="genre-pill" data-genre="7">Sports</div>
+            <div class="genre-pill" data-genre="8">Simulation</div>
+            <div class="genre-pill" data-genre="9">RPG</div>
+            <div class="genre-pill" data-genre="10">Strategy</div>
+            <div class="genre-pill" data-genre="11">Fighting</div>
+            <div class="genre-pill" data-genre="12">Horror</div>
+            <div class="genre-pill" data-genre="13">RTS</div>
+            <div class="genre-pill" data-genre="14">Card</div>
+            <div class="genre-pill" data-genre="15">Indie</div>
+            <div class="genre-pill" data-genre="16">LAN</div>
+        </div>
+
+        <div class="games-grid" id="gamesGrid"></div>
+
+        <div class="pagination-controls" id="pagination">
+            <a id="prevBtn" style="display: none;">Previous</a>
+            <div class="current-page" id="pageInfo">Page 1</div>
+            <a id="nextBtn" style="display: none;">Next</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <h4>Vyla</h4>
+                    <p class="footer-tagline">Discover and download your favorite games for free. No limits, no
+                        restrictions.</p>
+                </div>
+            </div>
+            <div class="footer-bottom-links">
+                <div class="footer-legal">
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms-of-use">Terms of Use</a>
+                    <a href="/dmca">DMCA</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://github.com/EndOverdosing/Vyla-Game-Scraper"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="details-overlay-backdrop" id="overlayBackdrop"></div>
 
     <script>
         let currentPage = 1;
         let currentGenre = '1';
         let currentSearch = '';
         let hasNextPage = false;
+        let cachedGreeting = "";
+        let lastScrollTop = 0;
+        let isScrollingDown = false;
 
         const gamesGrid = document.getElementById('gamesGrid');
-        const genreSelect = document.getElementById('genreSelect');
-        const searchInput = document.getElementById('searchInput');
+        const genresScroll = document.getElementById('genresScroll');
+        const heroSearchInput = document.getElementById('heroSearchInput');
+        const stickySearchInput = document.getElementById('stickySearchInput');
+        const stickySearch = document.querySelector('.sticky-search');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const pageInfo = document.getElementById('pageInfo');
-        const modalOverlay = document.getElementById('modalOverlay');
+        const overlayBackdrop = document.getElementById('overlayBackdrop');
+        const greetingText = document.getElementById('greeting-text');
+        const minimalHeroContent = document.getElementById('minimalHeroContent');
 
-        function showSkeletonCards(count = 8) {
+        function updateTimeBasedGreeting() {
+            if (!greetingText) return;
+            if (cachedGreeting) {
+                greetingText.innerHTML = cachedGreeting;
+                return;
+            }
+            const hour = new Date().getHours();
+            let greetings = [];
+            if (hour >= 5 && hour < 12) {
+                greetings = [
+                    "Good morning.<br>Start your day with a game.",
+                    "Rise and shine.<br>What are we playing?",
+                    "Morning.<br>Ready for some gaming?",
+                    "Top of the morning.<br>Pick your first game."
+                ];
+            } else if (hour >= 12 && hour < 17) {
+                greetings = [
+                    "Good afternoon.<br>Time for a break?",
+                    "Afternoon.<br>Dive into something new.",
+                    "Good afternoon.<br>The screen is yours.",
+                    "Midday escape.<br>What's next on the list?"
+                ];
+            } else {
+                greetings = [
+                    "Good evening.<br>Unwind with a favorite.",
+                    "Evening.<br>The night is young, play something.",
+                    "Good evening.<br>Perfect time for gaming.",
+                    "Night time.<br>Let's find a hidden gem."
+                ];
+            }
+            const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+            cachedGreeting = randomGreeting;
+            greetingText.innerHTML = randomGreeting;
+        }
+
+        function initParticles() {
+            const el = document.getElementById('hero-particles');
+            if (!el || el.children.length) return;
+            const icons = ['fa-gamepad', 'fa-dice', 'fa-chess', 'fa-puzzle-piece', 'fa-ghost', 'fa-meteor', 'fa-rocket', 'fa-crown'];
+            for (let i = 0; i < 80; i++) {
+                const p = document.createElement('i');
+                p.className = `fas ${icons[(Math.random() * icons.length) | 0]} particle`;
+                const size = 0.85 + Math.random() * 0.7;
+                const left = Math.random() * 100;
+                const yOffset = Math.random() * 200;
+                const duration = 10 + Math.random() * 20;
+                const delay = -Math.random() * 25;
+                const rotation = (90 + Math.random() * 180) * (Math.random() > 0.5 ? 1 : -1);
+                const opacity = 0.3 + Math.random() * 0.5;
+                const blur = Math.random();
+                p.style.setProperty('--p-left', `${left}%`);
+                p.style.setProperty('--p-size', `${size}rem`);
+                p.style.setProperty('--p-duration', `${duration}s`);
+                p.style.setProperty('--p-delay', `${delay}s`);
+                p.style.setProperty('--p-rotation', `${rotation}deg`);
+                p.style.setProperty('--p-opacity', opacity);
+                p.style.setProperty('--p-blur', `${blur}px`);
+                p.style.setProperty('--p-y-offset', `${yOffset}px`);
+                el.appendChild(p);
+            }
+        }
+
+        function showSkeletonCards(count = 12) {
             gamesGrid.innerHTML = Array(count).fill(0).map(() => `
-                <div class="skeleton-game-card">
-                    <div class="skeleton skeleton-image"></div>
+                <div class="content-card">
+                    <div class="card-poster-wrapper">
+                        <div class="skeleton skeleton-card"></div>
+                    </div>
                     <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-title" style="width: 60%; height: 16px;"></div>
                 </div>
             `).join('');
         }
 
         function loadGames(page = 1) {
             showSkeletonCards();
-
             const params = new URLSearchParams({
                 genre: currentGenre,
                 page: page,
                 ...(currentSearch && { search: currentSearch })
             });
-
             axios.get(`/api/games?${params}`)
                 .then(response => {
                     const games = response.data.games;
                     hasNextPage = response.data.has_next;
                     currentPage = response.data.page;
-
                     renderGames(games);
                     updatePagination();
+                    updateURL();
                 })
                 .catch(error => {
-                    gamesGrid.innerHTML = '<div class="error-message">Error loading games</div>';
+                    gamesGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--secondary-text-color);">Error loading games</div>';
                 });
         }
 
         function renderGames(games) {
             if (games.length === 0) {
-                gamesGrid.innerHTML = '<div class="no-results">No games found</div>';
+                gamesGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 60px; color: var(--secondary-text-color);">No games found</div>';
                 return;
             }
-
             gamesGrid.innerHTML = games.map(game => `
-                <div class="game-card" onclick="showGameDetails('${game.id}')">
-                    <img src="${game.image_url}" alt="${game.title}" class="game-image" onerror="this.src='https://via.placeholder.com/240x320/222/444?text='">
-                    <div class="game-title">${game.title}</div>
+                <div class="content-card" onclick="showGameDetails('${game.id}')">
+                    <div class="card-poster-wrapper">
+                        <img src="${game.image_url}" alt="${game.title}" class="content-card-poster" onerror="this.src='https://via.placeholder.com/300x450/222/444?text='">
+                    </div>
+                    <div class="content-card-title">${game.title}</div>
                 </div>
             `).join('');
         }
 
         function updatePagination() {
             pageInfo.textContent = `Page ${currentPage}`;
-            prevBtn.disabled = currentPage <= 1;
-            nextBtn.disabled = !hasNextPage;
+            prevBtn.style.display = currentPage > 1 ? 'flex' : 'none';
+            nextBtn.style.display = hasNextPage ? 'flex' : 'none';
+        }
+
+        function updateURL() {
+            let url = '/';
+            if (currentSearch) {
+                url = `/search?q=${encodeURIComponent(currentSearch)}`;
+                if (currentPage > 1) url += `&page=${currentPage}`;
+            } else if (currentGenre !== '1') {
+                url = `/?genre=${currentGenre}`;
+                if (currentPage > 1) url += `&page=${currentPage}`;
+            } else if (currentPage > 1) {
+                url = `/?page=${currentPage}`;
+            }
+            window.history.replaceState({}, '', url);
         }
 
         function showGameDetails(gameId) {
-            modalOverlay.style.display = 'block';
-            modalOverlay.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="skeleton skeleton-row" style="width: 60%; height: 24px;"></div>
-                        <button class="close-modal" onclick="closeGameDetails()">×</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="skeleton skeleton-large-image"></div>
-                        <div class="skeleton-details">
-                            <div class="skeleton skeleton-row short"></div>
-                            <div class="skeleton skeleton-row short"></div>
-                        </div>
-                        <div class="skeleton skeleton-description"></div>
-                        <div class="skeleton skeleton-btn"></div>
+            window.history.pushState({ gameId }, '', `/game/${gameId}`);
+            document.body.classList.add('details-open');
+            overlayBackdrop.style.display = 'block';
+            overlayBackdrop.innerHTML = `
+        <div class="details-overlay-pane">
+            <button class="details-overlay-close" onclick="closeGameDetails()"><i class="fas fa-times"></i></button>
+            <div class="details-overlay-scroll-container">
+                <div class="details-overlay-header-wrapper">
+                    <div class="details-overlay-background skeleton" style="background-color: var(--glass-base-bg);"></div>
+                    <div class="details-overlay-header-content">
+                        <div class="skeleton" style="height: 60px; width: 80%; margin-bottom: 20px;"></div>
+                        <div class="skeleton" style="height: 24px; width: 60%;"></div>
                     </div>
                 </div>
-            `;
+                <div class="details-overlay-body-content">
+                    <div class="skeleton" style="height: 120px; margin-bottom: 30px;"></div>
+                    <div class="skeleton" style="height: 200px; margin-bottom: 30px;"></div>
+                    <div class="skeleton" style="height: 50px;"></div>
+                </div>
+            </div>
+        </div>
+    `;
+            setTimeout(() => {
+                const pane = document.querySelector('.details-overlay-pane');
+                if (pane) pane.style.transform = window.innerWidth <= 768 ? 'none' : 'translate(-50%, -50%) scale(1)';
+            }, 10);
 
             axios.get(`/api/game/${gameId}`)
                 .then(response => {
                     const details = response.data;
-
-                    modalOverlay.innerHTML = `
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2>${details.title}</h2>
-                                <button class="close-modal" onclick="closeGameDetails()">×</button>
+                    let mediaHTML = '';
+                    if (details.videos && details.videos.length > 0) {
+                        mediaHTML += `
+                    <div class="media-gallery">
+                        <div class="gallery-title">Videos</div>
+                        <div class="videos-carousel">
+                            <div class="videos-track" id="videosTrack">
+                                ${details.videos.map(video => `
+                                    <div class="video-item">
+                                        <video controls>
+                                            <source src="${video}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                `).join('')}
                             </div>
-                            <div class="modal-body">
-                                ${details.image_url ? `<img src="${details.image_url}" alt="${details.title}" class="game-image-large" onerror="this.src='https://via.placeholder.com/700x300/222/444?text='">` : ''}
-                                
-                                <div class="game-info">
-                                    ${details.file_size ? `
-                                        <div class="info-row">
-                                            <div class="info-label">Size</div>
-                                            <div class="info-value">${details.file_size}</div>
-                                        </div>
-                                    ` : ''}
-                                    
-                                    ${details.game_id ? `
-                                        <div class="info-row">
-                                            <div class="info-label">ID</div>
-                                            <div class="info-value">${details.game_id}</div>
-                                        </div>
-                                    ` : ''}
+                            ${window.innerWidth > 768 ? `
+                                <div class="carousel-arrow prev" onclick="scrollVideos(-300)"><i class="fas fa-chevron-left"></i></div>
+                                <div class="carousel-arrow next" onclick="scrollVideos(300)"><i class="fas fa-chevron-right"></i></div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+                    }
+                    if (details.content_images && details.content_images.length > 0) {
+                        mediaHTML += `
+                    <div class="media-gallery">
+                        <div class="gallery-title">Screenshots</div>
+                        <div class="images-grid">
+                            ${details.content_images.slice(0, 6).map(img => `
+                                <img src="${img}" class="gallery-image" onclick="window.open('${img}', '_blank')">
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                    }
+
+                    const descriptionHTML = details.full_description ? `
+                <div class="description-section">
+                    <div class="description-content">${formatDescription(details.full_description)}</div>
+                </div>
+            ` : '';
+
+                    overlayBackdrop.innerHTML = `
+                <div class="details-overlay-pane">
+                    <button class="details-overlay-close" onclick="closeGameDetails()"><i class="fas fa-times"></i></button>
+                    <div class="details-overlay-scroll-container">
+                        <div class="details-overlay-header-wrapper">
+                            <div class="details-overlay-background" style="background-image: url('${details.capsule_image || ''}');"></div>
+                            <div class="details-overlay-header-content">
+                                <h1 class="details-overlay-title">${details.title}</h1>
+                                <div class="meta-info-overlay">
+                                    ${details.file_size ? `<span><i class="fas fa-hdd"></i> ${details.file_size}</span>` : ''}
+                                    ${details.version ? `<span><i class="fas fa-code-branch"></i> ${details.version}</span>` : ''}
+                                    ${details.game_id ? `<span><i class="fas fa-id-card"></i> ${details.game_id}</span>` : ''}
                                 </div>
-                                
-                                ${details.description ? `
-                                    <div class="game-description">${details.description}</div>
-                                ` : ''}
-                                
-                                ${details.game_id ? `
-                                    <button class="download-btn" id="downloadBtn" onclick="getDownloadUrl('${details.game_id}', '${details.title}', '${details.file_size || ''}')">
-                                        <div class="download-btn-content">
-                                            <div class="loading-spinner" id="downloadSpinner" style="display: none;"></div>
-                                            <span class="download-text" id="downloadText">Download</span>
-                                            ${details.file_size ? `<span class="download-size">${details.file_size}</span>` : ''}
-                                        </div>
-                                    </button>
-                                ` : '<div style="color: #666; text-align: center; padding: 16px; font-size: 14px;">Download not available</div>'}
                             </div>
                         </div>
-                    `;
+                        <div class="details-overlay-body-content">
+                            ${descriptionHTML}
+                            ${mediaHTML}
+                            <div class="download-section">
+                                <button class="download-btn" id="downloadBtn" onclick="getDownloadUrl('${details.game_id}', '${details.title}')">
+                                    <div class="download-btn-content">
+                                        <div class="loading-spinner" id="downloadSpinner" style="display: none;"></div>
+                                        <span id="downloadText">Fetch Download Link</span>
+                                    </div>
+                                </button>
+                                <div class="debug-message" id="debugMessage" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+                    setTimeout(() => {
+                        const pane = document.querySelector('.details-overlay-pane');
+                        if (pane) pane.style.transform = window.innerWidth <= 768 ? 'none' : 'translate(-50%, -50%) scale(1)';
+                    }, 10);
                 })
                 .catch(error => {
-                    modalOverlay.innerHTML = `
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2>Error</h2>
-                                <button class="close-modal" onclick="closeGameDetails()">×</button>
-                            </div>
-                            <div class="modal-body" style="text-align: center; color: #666; padding: 40px;">
-                                Failed to load game details
-                            </div>
-                        </div>
-                    `;
+                    overlayBackdrop.innerHTML = `
+                <div class="details-overlay-pane">
+                    <button class="details-overlay-close" onclick="closeGameDetails()"><i class="fas fa-times"></i></button>
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--secondary-text-color);">
+                        Failed to load game details
+                    </div>
+                </div>
+            `;
                 });
         }
 
-        async function getDownloadUrl(gameId, gameTitle, fileSize = '') {
+        function closeGameDetails() {
+            document.body.classList.remove('details-open');
+            overlayBackdrop.style.display = 'none';
+            overlayBackdrop.innerHTML = '';
+            window.history.back();
+        }
+
+        function formatDescription(text) {
+            if (!text) return '';
+            const paragraphs = text.split('|||');
+            return paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+        }
+
+        function scrollVideos(amount) {
+            const track = document.getElementById('videosTrack');
+            if (track) {
+                track.scrollBy({ left: amount, behavior: 'smooth' });
+            }
+        }
+
+        async function getDownloadUrl(gameId, gameTitle) {
             const downloadBtn = document.getElementById('downloadBtn');
             const downloadText = document.getElementById('downloadText');
             const downloadSpinner = document.getElementById('downloadSpinner');
-
+            const debugMessage = document.getElementById('debugMessage');
             downloadBtn.disabled = true;
             downloadSpinner.style.display = 'block';
-            downloadText.textContent = 'Loading...';
-
+            downloadText.textContent = 'Fetching link...';
+            debugMessage.style.display = 'block';
+            debugMessage.textContent = 'Contacting download server...';
+            debugMessage.style.color = 'var(--secondary-text-color)';
             try {
                 const response = await axios.get(`/api/download/${gameId}`);
-
                 if (response.data.url && response.data.url !== 'rate_limited') {
-                    const a = document.createElement('a');
-                    a.href = response.data.url;
-                    a.download = `${gameTitle.replace(/[<>:"/\\|?*]/g, '_')}.zip`;
-
-                    setTimeout(() => {
-                        a.click();
-                        downloadText.textContent = 'Downloaded';
-                        setTimeout(() => {
-                            downloadText.textContent = 'Download';
-                            downloadBtn.disabled = false;
-                            downloadSpinner.style.display = 'none';
-                        }, 1000);
-                    }, 300);
-
-                } else if (response.data.error === 'rate_limited') {
-                    downloadBtn.classList.add('rate-limited-btn');
+                    downloadText.textContent = 'Download Now';
                     downloadSpinner.style.display = 'none';
-
+                    debugMessage.textContent = 'Link fetched successfully! Click Download Now to start.';
+                    debugMessage.style.color = '#4ade80';
+                    downloadBtn.onclick = function () {
+                        const a = document.createElement('a');
+                        a.href = response.data.url;
+                        a.download = `${gameTitle.replace(/[<>:"/\\|?*]/g, '_')}.zip`;
+                        a.target = '_blank';
+                        a.click();
+                        downloadText.textContent = 'Downloading...';
+                        downloadBtn.disabled = true;
+                        debugMessage.textContent = 'Download started in new tab. If blocked, check your popup settings.';
+                        setTimeout(() => {
+                            downloadText.textContent = 'Fetch Download Link';
+                            downloadBtn.disabled = false;
+                            downloadBtn.onclick = () => getDownloadUrl(gameId, gameTitle);
+                            debugMessage.style.display = 'none';
+                        }, 5000);
+                    };
+                } else if (response.data.error === 'rate_limited') {
+                    downloadSpinner.style.display = 'none';
+                    downloadBtn.classList.add('rate-limited');
                     let countdown = 30;
+                    debugMessage.textContent = `Rate limited by server. Waiting ${countdown} seconds...`;
+                    debugMessage.style.color = '#f87171';
                     const countdownInterval = setInterval(() => {
                         downloadText.textContent = `Rate limited (${countdown}s)`;
+                        debugMessage.textContent = `Rate limited by server. Waiting ${countdown} seconds...`;
                         countdown--;
-
                         if (countdown < 0) {
                             clearInterval(countdownInterval);
-                            downloadBtn.classList.remove('rate-limited-btn');
-                            downloadText.textContent = 'Download';
+                            downloadBtn.classList.remove('rate-limited');
+                            downloadText.textContent = 'Fetch Download Link';
                             downloadBtn.disabled = false;
+                            debugMessage.style.display = 'none';
                         }
                     }, 1000);
-
                 } else {
-                    throw new Error('No download URL');
+                    throw new Error('No download URL received');
                 }
             } catch (error) {
-                if (error.response && error.response.status === 429) {
-                    downloadBtn.classList.add('rate-limited-btn');
-                    downloadSpinner.style.display = 'none';
-
-                    let countdown = 30;
-                    const countdownInterval = setInterval(() => {
-                        downloadText.textContent = `Rate limited (${countdown}s)`;
-                        countdown--;
-
-                        if (countdown < 0) {
-                            clearInterval(countdownInterval);
-                            downloadBtn.classList.remove('rate-limited-btn');
-                            downloadText.textContent = 'Download';
-                            downloadBtn.disabled = false;
-                        }
-                    }, 1000);
-                } else {
-                    downloadText.textContent = 'Failed';
-                    downloadSpinner.style.display = 'none';
-
-                    setTimeout(() => {
-                        downloadText.textContent = 'Download';
-                        downloadBtn.disabled = false;
-                    }, 2000);
-                }
+                downloadSpinner.style.display = 'none';
+                downloadText.textContent = 'Failed';
+                debugMessage.textContent = error.response?.status === 429 ? 'Too many requests. Please wait.' : 'Server error. Please try again.';
+                debugMessage.style.color = '#f87171';
+                setTimeout(() => {
+                    downloadText.textContent = 'Fetch Download Link';
+                    downloadBtn.disabled = false;
+                    debugMessage.style.display = 'none';
+                }, 3000);
             }
         }
 
-        function closeGameDetails() {
-            modalOverlay.style.display = 'none';
-        }
-
-        function performSearch() {
-            currentSearch = searchInput.value.trim();
+        function performSearch(query) {
+            currentSearch = query;
             currentPage = 1;
             loadGames();
+            updateURL();
         }
 
-        genreSelect.addEventListener('change', (e) => {
-            currentGenre = e.target.value;
-            currentSearch = '';
-            searchInput.value = '';
-            currentPage = 1;
-            loadGames();
+        genresScroll.addEventListener('click', (e) => {
+            if (e.target.classList.contains('genre-pill')) {
+                document.querySelectorAll('.genre-pill').forEach(p => p.classList.remove('active'));
+                e.target.classList.add('active');
+                currentGenre = e.target.dataset.genre;
+                currentSearch = '';
+                heroSearchInput.value = '';
+                stickySearchInput.value = '';
+                currentPage = 1;
+                loadGames();
+            }
         });
 
-        searchInput.addEventListener('input', debounce(performSearch, 500));
+        heroSearchInput.addEventListener('input', debounce(() => {
+            performSearch(heroSearchInput.value.trim());
+        }, 500));
 
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
+        stickySearchInput.addEventListener('input', debounce(() => {
+            performSearch(stickySearchInput.value.trim());
+        }, 500));
+
+        heroSearchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch(heroSearchInput.value.trim());
+        });
+
+        stickySearchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch(stickySearchInput.value.trim());
         });
 
         prevBtn.addEventListener('click', () => {
-            if (currentPage > 1) {
-                loadGames(currentPage - 1);
-            }
+            if (currentPage > 1) loadGames(currentPage - 1);
         });
 
         nextBtn.addEventListener('click', () => {
-            if (hasNextPage) {
-                loadGames(currentPage + 1);
+            if (hasNextPage) loadGames(currentPage + 1);
+        });
+
+        window.addEventListener('scroll', () => {
+            const st = window.pageYOffset || document.documentElement.scrollTop;
+            const heroBottom = document.getElementById('minimal-hero-container').getBoundingClientRect().bottom;
+            const heroHeight = document.getElementById('minimal-hero-container').offsetHeight;
+
+            isScrollingDown = st > lastScrollTop;
+            lastScrollTop = st <= 0 ? 0 : st;
+
+            if (heroBottom < 0) {
+                stickySearch.classList.add('visible');
+                if (isScrollingDown) {
+                    minimalHeroContent.classList.add('hidden');
+                } else {
+                    minimalHeroContent.classList.remove('hidden');
+                }
+            } else {
+                stickySearch.classList.remove('visible');
+                minimalHeroContent.classList.remove('hidden');
             }
         });
 
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                closeGameDetails();
+        window.addEventListener('popstate', (e) => {
+            const path = window.location.pathname;
+            const searchParams = new URLSearchParams(window.location.search);
+            if (path.startsWith('/game/')) {
+                const gameId = path.split('/')[2];
+                showGameDetails(gameId);
+            } else {
+                document.body.classList.remove('details-open');
+                overlayBackdrop.style.display = 'none';
+                overlayBackdrop.innerHTML = '';
+                if (path === '/search') {
+                    const query = searchParams.get('q') || '';
+                    heroSearchInput.value = query;
+                    stickySearchInput.value = query;
+                    currentSearch = query;
+                    currentPage = parseInt(searchParams.get('page') || '1');
+                    loadGames(currentPage);
+                } else {
+                    const genre = searchParams.get('genre') || '1';
+                    currentGenre = genre;
+                    document.querySelectorAll('.genre-pill').forEach(p => p.classList.remove('active'));
+                    document.querySelector(`.genre-pill[data-genre="${genre}"]`)?.classList.add('active');
+                    currentSearch = '';
+                    heroSearchInput.value = '';
+                    stickySearchInput.value = '';
+                    currentPage = parseInt(searchParams.get('page') || '1');
+                    loadGames(currentPage);
+                }
             }
         });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modalOverlay.style.display === 'block') {
-                closeGameDetails();
+        document.addEventListener('touchstart', function () { }, { passive: true });
+
+        document.addEventListener('touchstart', function (e) {
+            const card = e.target.closest('.content-card');
+            if (card) {
+                card.classList.add('touched');
+            }
+        });
+
+        document.addEventListener('touchend', function (e) {
+            const card = e.target.closest('.content-card');
+            if (card) {
+                setTimeout(() => {
+                    card.classList.remove('touched');
+                }, 150);
             }
         });
 
@@ -838,7 +644,33 @@
             };
         }
 
-        loadGames();
+        function initFromURL() {
+            const path = window.location.pathname;
+            const searchParams = new URLSearchParams(window.location.search);
+            if (path.startsWith('/game/')) {
+                const gameId = path.split('/')[2];
+                showGameDetails(gameId);
+                return;
+            }
+            if (path === '/search') {
+                const query = searchParams.get('q') || '';
+                heroSearchInput.value = query;
+                stickySearchInput.value = query;
+                currentSearch = query;
+                currentPage = parseInt(searchParams.get('page') || '1');
+            } else {
+                const genre = searchParams.get('genre') || '1';
+                currentGenre = genre;
+                document.querySelectorAll('.genre-pill').forEach(p => p.classList.remove('active'));
+                document.querySelector(`.genre-pill[data-genre="${genre}"]`)?.classList.add('active');
+                currentPage = parseInt(searchParams.get('page') || '1');
+            }
+            loadGames(currentPage);
+        }
+
+        updateTimeBasedGreeting();
+        initParticles();
+        initFromURL();
     </script>
 </body>
 

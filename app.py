@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, Response
+from flask import Flask, render_template, request, jsonify, send_from_directory
 import urllib.request
 import urllib.parse
 import re
@@ -8,10 +8,11 @@ import hashlib
 import time
 import urllib.error
 from functools import wraps
+import os
 
 app = Flask(__name__)
 
-class KoysoScraper:
+class VylaScraper:
     def __init__(self):
         self.base_url = "https://koyso.to"
         self.all_games = []
@@ -127,17 +128,42 @@ class KoysoScraper:
         if title_match:
             details['title'] = html.unescape(re.sub(r'<[^>]*>', '', title_match.group(1)).strip())
 
-        description_match = re.search(r'<div class="content_body">.*?<p>(.*?)</p>', html_content, re.DOTALL)
-        if description_match:
-            details['description'] = html.unescape(re.sub(r'<[^>]*>', '', description_match.group(1)).strip())
+        content_body_match = re.search(r'<div class="content_body">(.*?)</div>', html_content, re.DOTALL)
+        if content_body_match:
+            content_html = content_body_match.group(1)
+            
+            paragraphs = re.split(r'</p>|<p[^>]*>', content_html)
+            clean_paragraphs = []
+            for p in paragraphs:
+                p = re.sub(r'<[^>]*>', '', p)
+                p = re.sub(r'\s+', ' ', p).strip()
+                if p:
+                    clean_paragraphs.append(p)
+            
+            details['full_description'] = html.unescape('|||'.join(clean_paragraphs))
+            
+            images = re.findall(r'<img[^>]*src="([^"]*)"', content_html)
+            videos = re.findall(r'<video[^>]*>(.*?)</video>', html_content, re.DOTALL)
+            
+            video_sources = []
+            for video in videos:
+                video_src = re.findall(r'src="([^"]*)"', video)
+                video_sources.extend(video_src)
+            
+            details['content_images'] = images
+            details['videos'] = video_sources
 
-        image_match = re.search(r'<div class="capsule_div">.*?<img[^>]*src="([^"]*)"', html_content, re.DOTALL)
-        if image_match:
-            details['image_url'] = image_match.group(1)
+        capsule_match = re.search(r'<div class="capsule_div">.*?<img[^>]*src="([^"]*)"', html_content, re.DOTALL)
+        if capsule_match:
+            details['capsule_image'] = capsule_match.group(1)
 
         size_match = re.search(r'<span>Size</span>\s*<span>([^<]+)</span>', html_content)
         if size_match:
             details['file_size'] = size_match.group(1).strip()
+
+        version_match = re.search(r'<span>Version</span>\s*<span[^>]*>([^<]+)</span>', html_content)
+        if version_match:
+            details['version'] = version_match.group(1).strip()
 
         download_match = re.search(r'onclick="download\(\)".*?href="/download/(\d+)"', html_content, re.DOTALL)
         if download_match:
@@ -212,7 +238,7 @@ class KoysoScraper:
         except Exception as e:
             return None
 
-scraper = KoysoScraper()
+scraper = VylaScraper()
 
 def rate_limit_check(f):
     @wraps(f)
@@ -222,11 +248,57 @@ def rate_limit_check(f):
         return f(*args, **kwargs)
     return decorated_function
 
+@app.route('/manifest.webmanifest')
+def manifest():
+    return send_from_directory('.', 'manifest.webmanifest', mimetype='application/manifest+json')
+
+@app.route('/icons/<path:filename>')
+def serve_icons(filename):
+    return send_from_directory('static/icons', filename)
+
+@app.route('/styling/<path:filename>')
+def serve_css(filename):
+    return send_from_directory('templates/styling', filename)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory('static', 'favicon.ico')
+
+@app.route('/favicon-<size>.png')
+def favicon_png(size):
+    return send_from_directory('static', f'favicon-{size}.png')
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
+@app.route('/search')
+def search_page():
+    query = request.args.get('q', '')
+    return render_template('index.html', search_query=query)
+
+@app.route('/game/<game_id>')
+def game_page(game_id):
+    return render_template('index.html', game_id=game_id)
+
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy-policy.html')
+
+@app.route('/terms-of-use')
+def terms_of_use():
+    return render_template('terms-of-use.html')
+
+@app.route('/dmca')
+def dmca():
+    return render_template('dmca.html')
+
+@app.route('/images/<path:filename>')
+def serve_images(filename):
+    return send_from_directory('static/images', filename)
+
 @app.route('/api/games')
+
 @rate_limit_check
 def get_games():
     genre_id = request.args.get('genre', '1')
